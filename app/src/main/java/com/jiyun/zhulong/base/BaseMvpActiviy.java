@@ -72,7 +72,6 @@ public abstract class BaseMvpActiviy<M extends ICommonModel> extends BaseActivit
 
     //跳转页面
     public void goToActivity() {
-        showLog("登录过了：----用户信息:" + (SharedPrefrenceUtils.getObject(this, ConstantKey.LOGIN_INFO)).toString());
         if (mApplication.isLogin()) {
             if (SharedPrefrenceUtils.getObject(this, ConstantKey.IS_SELECTDE) != null) {
                 startActivity(new Intent(this, MyHomeActivity.class));

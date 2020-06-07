@@ -21,19 +21,15 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/5/31 03:06
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public class BaseFragment extends Fragment {
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
 
-    public void inStreamListener(SmartRefreshLayout smartRefreshLayout, DataListener dataListener){
+
+    public void setSmartListener(SmartRefreshLayout smartRefreshLayout, DataListener dataListener){
         smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {

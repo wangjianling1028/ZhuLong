@@ -26,9 +26,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/6/3 17:26
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public class LoginView extends RelativeLayout {
 

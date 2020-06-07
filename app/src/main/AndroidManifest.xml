@@ -13,7 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".activity.MyHomeActivity"></activity>
+
+
+        <activity android:name=".activity.HomeActivity"/>
+
+        <!--
+        <activity android:name=".activity.HomeActivity"/>
+        -->
+
         <activity android:name=".activity.MainActivity">
 
             <!-- 引导页面 -->
@@ -23,16 +32,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.LoginActivity">
 
             <!-- 登录界面 -->
 
         </activity>
-        <activity android:name=".activity.HomeActivity">
 
-            <!-- 首页 -->
 
-        </activity>
         <activity android:name=".activity.SpecialtyActivity">
 
             <!-- 专业选择页 -->

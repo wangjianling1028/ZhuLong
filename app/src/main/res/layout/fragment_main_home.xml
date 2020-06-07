@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".activity.HomeActivity">
+    tools:context=".fragment.MainHomeFragment">
 
     <!--  首页界面组  -->
     <LinearLayout
@@ -14,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#000000"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/ll_career"
@@ -22,7 +20,7 @@
             android:layout_height="@dimen/dp_30"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/dp_5"
-            android:layout_weight="2"
+            android:layout_weight="5"
             android:background="#666"
             android:orientation="horizontal">
 
@@ -42,9 +40,10 @@
                 android:textSize="@dimen/sp_20" />
 
             <ImageView
-                android:layout_width="@dimen/sp_20"
-                android:layout_height="@dimen/sp_20"
-                android:layout_margin="@dimen/dp_5"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/sp_10"
+                android:layout_height="@dimen/sp_10"
+                android:layout_margin="@dimen/dp_3"
                 android:src="@mipmap/ic_arrow_down" />
 
         </LinearLayout>
@@ -55,7 +54,7 @@
             android:layout_height="@dimen/dp_30"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/dp_5"
-            android:layout_weight="2"
+            android:layout_weight="5"
             android:background="#666"
             android:orientation="horizontal">
 
@@ -101,24 +100,24 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/fl"
+    <fragment
+        android:id="@+id/navigation_home_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
-        android:layout_weight="1" />
+        app:defaultNavHost="false"
+        app:layout_constraintBottom_toTopOf="@id/bottom_tab"
+        app:layout_constraintTop_toBottomOf="@id/ll_header"
+        app:navGraph="@navigation/navigation_fragment" />
 
-    <TextView
+    <com.jiyun.zhulong.design.BottomTabView
+        android:id="@+id/bottom_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"
-        android:background="#666" />
+        android:layout_height="wrap_content"
+        app:defaultShowTab="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:selectedColor="@color/red"
+        app:tabCount="5"
+        app:unSelectedColor="@color/gray" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:background="#fff"
-        app:tabIndicatorColor="#fff"
-        app:tabSelectedTextColor="#f00"
-        app:tabTextColor="#000" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

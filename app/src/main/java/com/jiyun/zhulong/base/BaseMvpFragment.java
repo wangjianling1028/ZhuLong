@@ -14,9 +14,9 @@ import com.jiyun.frame.mvp.ICommonView;
 import butterknife.ButterKnife;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/5/31 02:22
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public abstract class BaseMvpFragment<M extends ICommonModel> extends BaseFragment implements ICommonView {
     private M mModel;
@@ -31,7 +31,7 @@ public abstract class BaseMvpFragment<M extends ICommonModel> extends BaseFragme
         mModel = setModel();
         if (mModel != null)
             mPresenter = new CommonPresenter(this, mModel);
-        initView();
+        initView(view);
         initData();
         initListener();
         return view;
@@ -41,7 +41,7 @@ public abstract class BaseMvpFragment<M extends ICommonModel> extends BaseFragme
 
     protected abstract M setModel();
 
-    protected abstract void initView();
+    protected abstract void initView(View view);
 
     protected abstract void initData();
 
@@ -61,13 +61,14 @@ public abstract class BaseMvpFragment<M extends ICommonModel> extends BaseFragme
 
     @Override
     public void netFailed(int apiConfig, Throwable throwable) {
-        showLog("错误：" + apiConfig + "，error content" + throwable != null && !TextUtils.isEmpty(throwable.getMessage()) ? throwable.getMessage() : "不明错误类型");
+        showLog("错误：" + apiConfig + "，******错误信息：" + throwable != null && !TextUtils.isEmpty(throwable.getMessage()) ? throwable.getMessage() : "不明错误类型");
         onFailed(apiConfig, throwable);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.clear();
+        if (mPresenter != null)
+            mPresenter.clear();
     }
 }

@@ -1,41 +1,41 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:1:1-13:12
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:1:1-13:12
+ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:1:1-13:12
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:1:1-13:12
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:1:1-13:12
 	package
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:2:5-33
-		INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-		INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:2:5-33
+		INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+		INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:1:11-69
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:4:5-79
+ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:4:5-79
 	android:name
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:4:22-76
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:4:22-76
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:5:5-79
+ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:5:22-76
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:7:5-75
+ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:7:5-75
 	android:name
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:7:22-72
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:7:22-72
 application
-ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:9:5-11:19
+ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:9:5-11:19
 	android:label
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml:9:18-50
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml:9:18-50
 uses-sdk
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-		INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
+		INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+		INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-		ADDED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
-		INJECTED from G:\shixun1\ZhuLong\utils\src\main\AndroidManifest.xml
+		INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+		ADDED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml
+		INJECTED from E:\Android_studio\ZhuLong\utils\src\main\AndroidManifest.xml

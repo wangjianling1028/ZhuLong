@@ -1,14 +1,16 @@
 package com.jiyun.zhulong.fragment;
 
 
+import android.view.View;
+
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.zhulong.R;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/5/31 03:22
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public class MineFragment extends BaseMvpFragment {
     @Override
@@ -22,7 +24,7 @@ public class MineFragment extends BaseMvpFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 

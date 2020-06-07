@@ -1,13 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.CourseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        app:tabIndicatorColor="@color/color_red_text"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="@color/color_red"
+        app:tabTextColor="@color/fontColor666" />
+    <View
+        android:background="@color/download_btn_enable"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_course"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="课程" />
+        android:background="@color/color_white" />
 
-</FrameLayout>
+</LinearLayout>

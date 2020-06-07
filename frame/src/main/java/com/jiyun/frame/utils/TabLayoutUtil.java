@@ -12,9 +12,9 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/5/31 08:47
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public class TabLayoutUtil {
 
@@ -50,21 +50,6 @@ public class TabLayoutUtil {
         }
         begin.commit();
     }
-
-    //tablayout结合viewpager实现三联动时使用
-    public void TabAddViewPager(TabLayout tab, ViewPager vp, String[] tabTitles, Fragment[] fragments, int[] IconID) {
-        tab.setupWithViewPager(vp);
-        if (IconID == null && IconID.length == 0) {
-            for (int i = 0; i < fragments.length; i++) {
-                tab.getTabAt(i).setText(tabTitles[i]);
-            }
-        } else {
-            for (int i = 0; i < fragments.length; i++) {
-                tab.getTabAt(i).setText(tabTitles[i]).setIcon(IconID[i]);
-            }
-        }
-    }
-
 
     //点击显示隐藏
     public void TabListener(TabLayout tab, FragmentManager manager, Fragment[] fragments) {

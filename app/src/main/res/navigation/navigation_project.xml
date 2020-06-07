@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_home"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/mainHomeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.jiyun.zhulong.fragment.HomeFragment"
-        android:label="HomeFragment">
+        android:id="@+id/mainHomeFragment"
+        android:name="com.jiyun.zhulong.fragment.MainHomeFragment"
+        android:label="MainHomeFragment">
       <!--  <action
             android:id="@+id/toAdvert"
             app:destination="@id/advertFragment" />-->

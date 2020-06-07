@@ -21,10 +21,10 @@ import com.jiyun.frame.utils.TabLayoutUtil;
 import com.jiyun.zhulong.R;
 import com.jiyun.zhulong.base.BaseMvpActiviy;
 import com.jiyun.zhulong.fragment.CourseFragment;
-import com.jiyun.zhulong.fragment.HomeFragment;
+import com.jiyun.zhulong.fragment.MainHomeFragment;
 import com.jiyun.zhulong.fragment.MineFragment;
 import com.jiyun.zhulong.fragment.TabDataFragment;
-import com.jiyun.zhulong.fragment.VipFragment;
+import com.jiyun.zhulong.fragment.VIPFragment;
 import com.jiyun.zhulong.mypackage.MayTabSelectedListener;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
@@ -48,7 +48,6 @@ public class HomeActivity extends BaseMvpActiviy {
     TabLayout tab;
     private FragmentManager manager;
     private Fragment[] fragments;
-    private long exitTime = 0;
     private SpecialtyBean.ResultBean.DataBean dataBean;
 
     @Override
@@ -64,12 +63,12 @@ public class HomeActivity extends BaseMvpActiviy {
     @Override
     protected void initView() {
         //获取手机存储的专业设置给textview
-        if (SharedPrefrenceUtils.getObject(this, ConstantKey.IS_SELECTDE)!=null){
+        if (SharedPrefrenceUtils.getObject(this, ConstantKey.IS_SELECTDE) != null) {
             dataBean = SharedPrefrenceUtils.getObject(this, ConstantKey.IS_SELECTDE);
             tvCareer.setText(dataBean.getSpecialty_name());
         }
         manager = getSupportFragmentManager();
-        fragments = new Fragment[]{new HomeFragment(), new CourseFragment(), new VipFragment(), new TabDataFragment(), new MineFragment()};
+        fragments = new Fragment[]{new MainHomeFragment(), new CourseFragment(), new VIPFragment(), new TabDataFragment(), new MineFragment()};
         String[] tabTitles = new String[]{"主页", "课程", "VIP", "资料", "我的"};
         int[] icons = new int[]{R.drawable.home_selector, R.drawable.course_selector, R.drawable.vip_selector, R.drawable.data_selector, R.drawable.mine_selector};
         TabLayoutUtil.getInstance().TabAddFrameLayout(R.id.fl, manager, tab, tabTitles, fragments, icons);
@@ -142,6 +141,7 @@ public class HomeActivity extends BaseMvpActiviy {
     }
 
     //连按两次返回键回退到桌面
+    private long exitTime = 0;
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK

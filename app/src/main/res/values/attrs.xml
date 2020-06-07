@@ -246,6 +246,7 @@
         <attr name="tabCount" format="integer" />
         <attr name="selectedColor" format="color" />
         <attr name="unSelectedColor" format="color" />
+        <attr name="defaultShowTab" format="integer"/>
     </declare-styleable>
 
 </resources>

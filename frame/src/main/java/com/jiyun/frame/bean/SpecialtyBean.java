@@ -23,6 +23,16 @@ public class SpecialtyBean implements Serializable {
     private List<ResultBean> result;
     private List<ExtraBean> extra;
 
+    @Override
+    public String toString() {
+        return "SpecialtyBean{" +
+                "errNo=" + errNo +
+                ", exeTime=" + exeTime +
+                ", result=" + result +
+                ", extra=" + extra +
+                '}';
+    }
+
     public int getErrNo() {
         return errNo;
     }
@@ -55,7 +65,7 @@ public class SpecialtyBean implements Serializable {
         this.extra = extra;
     }
 
-    public static class ResultBean implements Serializable{
+    public static class ResultBean implements Serializable {
         /**
          * bigspecialty : 设计学院
          * is_classify : 1
@@ -67,6 +77,16 @@ public class SpecialtyBean implements Serializable {
         private int is_classify;
         private String icon;
         private List<DataBean> data;
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "bigspecialty='" + bigspecialty + '\'' +
+                    ", is_classify=" + is_classify +
+                    ", icon='" + icon + '\'' +
+                    ", data=" + data +
+                    '}';
+        }
 
         public String getBigspecialty() {
             return bigspecialty;
@@ -100,7 +120,7 @@ public class SpecialtyBean implements Serializable {
             this.data = data;
         }
 
-        public static class DataBean implements Serializable{
+        public static class DataBean implements Serializable {
             /**
              * specialty_id : 1
              * fid : 3
@@ -111,6 +131,16 @@ public class SpecialtyBean implements Serializable {
             private int fid;
             private String specialty_name;
             private boolean isSelected;
+
+            @Override
+            public String toString() {
+                return "DataBean{" +
+                        "specialty_id='" + specialty_id + '\'' +
+                        ", fid=" + fid +
+                        ", specialty_name='" + specialty_name + '\'' +
+                        ", isSelected=" + isSelected +
+                        '}';
+            }
 
             public boolean isSelected() {
                 return isSelected;
@@ -156,6 +186,15 @@ public class SpecialtyBean implements Serializable {
         private int specialty_id;
         private int fid;
         private String specialty_name;
+
+        @Override
+        public String toString() {
+            return "ExtraBean{" +
+                    "specialty_id=" + specialty_id +
+                    ", fid=" + fid +
+                    ", specialty_name='" + specialty_name + '\'' +
+                    '}';
+        }
 
         public int getSpecialty_id() {
             return specialty_id;

@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/6/2 23:48
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public class ChildSpecialtyRvAdapter extends RecyclerView.Adapter<ChildSpecialtyRvAdapter.ViewHolder> {
     private Context context;
@@ -70,7 +70,8 @@ public class ChildSpecialtyRvAdapter extends RecyclerView.Adapter<ChildSpecialty
             public void onClick(View view) {
                 FrameApplication.getFrameApplication().setSelectedInfo(dataBean);
                 specialtyRvAdapter.notifyDataSetChanged();
-                context.startActivity(new Intent(context, MyHomeActivity.class));
+                onItemClickListener.onItemClick(position);
+//                context.startActivity(new Intent(context, MyHomeActivity.class));
             }
         });
     }

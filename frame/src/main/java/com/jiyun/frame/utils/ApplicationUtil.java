@@ -4,9 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 /**
- * 作者：dell  张扬
+ *    ：      --
  * 创建于： 2020/5/31 09:12
- * 作者邮箱：1214476635@qq.com
+ *    邮箱：1750827655@qq.com
  */
 public class ApplicationUtil extends Application {
     private static ApplicationUtil applicationUtil;

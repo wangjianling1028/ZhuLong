@@ -90,6 +90,13 @@ public class SpecialtyActivity extends BaseMvpActiviy {
     @Override
     public void initListener() {
         super.initListener();
+
+        adapter.setOnItemClickListener(new SpecialtyRvAdapter.OnGroupItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                finish();
+            }
+        });
         //点击图片跳转首页页面
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override

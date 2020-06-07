@@ -2,6 +2,9 @@ package com.jiyun.frame.api;
 
 import java.util.Map;
 
+import com.jiyun.bean.CourseDrillBean;
+import com.jiyun.bean.DataSquadBean;
+import com.jiyun.bean.NewsEliteBean;
 import com.jiyun.frame.bean.BaseInfo;
 import com.jiyun.frame.bean.LeadBean;
 import com.jiyun.frame.bean.FuliBean;
@@ -40,4 +43,14 @@ public interface ApiService {
     @POST("getUserHeaderForMobile")
     @FormUrlEncoded
     Observable<BaseInfo<PersonHeader>> getHeaderInfo(@FieldMap Map<String,Object> params);
+
+    @GET("lesson/getLessonListForApi")//课程训练营
+    Observable<CourseDrillBean>getCourseDrillData(@QueryMap Map<String,Object>map);
+
+    @GET("group/getGroupList")//资料小组
+    Observable<DataSquadBean> getDataSquadData(@QueryMap Map<String,Object>map);
+
+    @GET("group/getThreadEssence") //最新精华
+    Observable<NewsEliteBean> getNewsElite(@QueryMap Map<String,Object>map);
+
 }

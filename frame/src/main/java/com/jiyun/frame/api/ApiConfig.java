@@ -8,4 +8,9 @@ public class ApiConfig {
     public static final int SEND_VERIFY = 4;
     public static final int VERIFY_LOGIN = 5;
     public static final int GET_HEADER_INFO = 6;
+    public static final int GET_COURSE_DATA = 7;
+    //资料小组
+    public static final int GET_SQUAD_DATA=8;
+    //最新精华
+    public static final int GET_NEWS_DATA=9;
 }

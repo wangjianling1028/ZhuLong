@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -36,8 +37,8 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseMvpActiviy {
 
-    @BindView(R.id.bt_home_time)
-    Button mHomeTimeBt;
+    @BindView(R.id.time_view)
+    TextView mTextView;
     @BindView(R.id.img_home_top)
     ImageView mHomeTopImg;
     @BindView(R.id.img_home_bottom)
@@ -59,8 +60,7 @@ public class MainActivity extends BaseMvpActiviy {
         @Override
         public boolean handleMessage(@NonNull Message message) {
             if (message.what == 0) {
-                mHomeTimeBt.setText("跳过" + time);
-                mHomeTimeBt.setVisibility(View.VISIBLE);
+                mTextView.setText("跳过" + time);
                 time--;
                 mHomeBottomImg.setVisibility(View.VISIBLE);
                 int height = mHomeBottomImg.getHeight();
@@ -179,7 +179,7 @@ public class MainActivity extends BaseMvpActiviy {
             }
         });
         //跳转按钮点击
-        mHomeTimeBt.setOnClickListener(new View.OnClickListener() {
+        mTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isClick) {

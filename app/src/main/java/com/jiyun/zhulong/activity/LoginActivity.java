@@ -56,7 +56,9 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
         switch (apiConfig) {
             case ApiConfig.SEND_VERIFY:
                 BaseInfo<String> info = (BaseInfo<String>) objects[0];
-                showToast(info.result);
+                if (info.result != null) {
+                    showToast(info.result);
+                }
                 goTime();
                 break;
             case ApiConfig.VERIFY_LOGIN:
@@ -64,14 +66,14 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
                 LoginInfo loginInfo = baseInfo.result;
                 loginInfo.login_name = phoneNum;
                 mApplication.setLoginInfo(loginInfo);
-                mPresenter.getData(ApiConfig.GET_HEADER_INFO,LoadTypeConfig.NORMAL);
+                mPresenter.getData(ApiConfig.GET_HEADER_INFO, LoadTypeConfig.NORMAL);
                 break;
             case ApiConfig.GET_HEADER_INFO:
                 PersonHeader personHeader = ((BaseInfo<PersonHeader>) objects[0]).result;
                 mApplication.getLoginInfo().personHeader = personHeader;
                 //将用户信息保存到本地，下次将 不再登录
                 SharedPrefrenceUtils.putObject(this, ConstantKey.LOGIN_INFO, mApplication.getLoginInfo());
-                showLog("登录成功，-------用户信息："+SharedPrefrenceUtils.getObject(this,ConstantKey.LOGIN_INFO));
+                showLog("登录成功，-------用户信息：" + SharedPrefrenceUtils.getObject(this, ConstantKey.LOGIN_INFO));
                 jump();
                 break;
         }
@@ -92,9 +94,9 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(goTime -> {
-            mLoginView.tvSecurityGetAuthcode.setText(time - goTime + "s");
-            if (time - goTime < 1) doPre();
-        });
+                    mLoginView.tvSecurityGetAuthcode.setText(time - goTime + "s");
+                    if (time - goTime < 1) doPre();
+                });
     }
 
     private void doPre() {
@@ -103,11 +105,10 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
     }
 
 
-
     @Override
     public void sendVerifyCode(String phoneNum) {
         this.phoneNum = phoneNum;
-        mPresenter.getData(ApiConfig.SEND_VERIFY, LoadTypeConfig.NORMAL,phoneNum);
+        mPresenter.getData(ApiConfig.SEND_VERIFY, LoadTypeConfig.NORMAL, phoneNum);
     }
 
     @Override
