@@ -1,41 +1,36 @@
 package com.jiyun.zhulong.fragment;
 
 
-
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.tabdata.adapter.TabDataVpAdapter;
 import com.jiyun.tabdata.fragment.DataSquadFragment;
 import com.jiyun.tabdata.fragment.NewsEliteFragment;
-import com.jiyun.tabdata.fragment.NewsFragmnet;
 import com.jiyun.zhulong.R;
+import com.jiyun.zhulong.adapter.MyFragmentAdapter;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
- *    ：      --
+ * ：      --
  * 创建于： 2020/5/31 03:21
- *    邮箱：1750827655@qq.com
+ * 邮箱：1750827655@qq.com
  */
 public class TabDataFragment extends BaseMvpFragment {
     @BindView(R.id.vp_data)
-    ViewPager vpData;
-    @BindView(R.id.tv_squad)
-    TextView tvSquad;
-    @BindView(R.id.tv_news)
-    TextView tvNews;
-    @BindView(R.id.ll_tabdata)
-    LinearLayout llTabdata;
+    ViewPager viewPager;
+    @BindView(R.id.tab_layout)
+    SegmentTabLayout tabLayout;
 
     @Override
     protected int setLayout() {
@@ -53,17 +48,28 @@ public class TabDataFragment extends BaseMvpFragment {
         ArrayList<Fragment> fragments = new ArrayList<>();
         DataSquadFragment dataSquadFragment = new DataSquadFragment();
         NewsEliteFragment newsEliteFragment = new NewsEliteFragment();
-        //NewsFragmnet newsFragmnet = new NewsFragmnet();
         fragments.add(dataSquadFragment);
         fragments.add(newsEliteFragment);
-        TabDataVpAdapter adapter = new TabDataVpAdapter(getChildFragmentManager(), fragments);
-        vpData.setAdapter(adapter);
-    }
 
-    @Override
-    public void initListener() {
-        super.initListener();
-        vpData.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        //TabDataVpAdapter adapter = new TabDataVpAdapter(getChildFragmentManager(), fragments);
+            String[] strings ={"资料小组","最新精华"};
+        MyFragmentAdapter adapter = new MyFragmentAdapter(getChildFragmentManager(), fragments, Arrays.asList(strings));
+        viewPager.setAdapter(adapter);
+        tabLayout.setTabData(strings);
+
+        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+               viewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -71,9 +77,7 @@ public class TabDataFragment extends BaseMvpFragment {
 
             @Override
             public void onPageSelected(int position) {
-                if (position==1){
-
-                }
+                tabLayout.setCurrentTab(position);
             }
 
             @Override
@@ -81,6 +85,7 @@ public class TabDataFragment extends BaseMvpFragment {
 
             }
         });
+
     }
 
     @Override
@@ -91,17 +96,5 @@ public class TabDataFragment extends BaseMvpFragment {
     @Override
     protected void onSuccess(int apiConfig, int loadTypeConfig, Object[] object) {
 
-    }
-
-    @OnClick({R.id.tv_squad, R.id.tv_news})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_squad:
-
-                break;
-            case R.id.tv_news:
-
-                break;
-        }
     }
 }

@@ -66,7 +66,7 @@ public class NetManager {
         return log;
     }
 
-    public <T,O> void netWork(Observable<T> localTestInfo, ICommonPresenter iCommonPresenter, int apiConfig, int loadTypeConfig, O...os){
+    public <T,O> void netWork(Observable<T> localTestInfo, ICommonPresenter iCommonPresenter, int apiConfig, O...os){
         localTestInfo.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObesrver() {
@@ -79,7 +79,11 @@ public class NetManager {
 
                     @Override
                     public void onSuccess(Object values) {
-                        iCommonPresenter.netSuccess(apiConfig,loadTypeConfig,values,os);
+                        int os1 = 0;
+                        if (os !=null) {
+                             os1 = (Integer) os[0];
+                        }
+                        iCommonPresenter.netSuccess(apiConfig,os1,values);
                     }
 
                     @Override

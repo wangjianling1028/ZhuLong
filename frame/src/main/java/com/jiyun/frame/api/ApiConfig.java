@@ -13,4 +13,8 @@ public class ApiConfig {
     public static final int GET_SQUAD_DATA=8;
     //最新精华
     public static final int GET_NEWS_DATA=9;
+    //主页面1
+    public static final int GET_HoME1=10;
+    //主页面2
+    public static final int GET_HoME2=11;
 }

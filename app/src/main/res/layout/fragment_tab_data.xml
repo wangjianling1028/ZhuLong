@@ -7,37 +7,32 @@
     android:padding="@dimen/dp_10"
     tools:context=".fragment.TabDataFragment">
 
-    <LinearLayout
-        android:id="@+id/ll_tabdata"
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_40"
+        android:layout_height="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginRight="15dp"
         android:layout_gravity="right"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_20"
-        android:background="@drawable/tabdata_shape"
-        android:orientation="horizontal">
+        android:layout_centerHorizontal="true"
+        app:tl_bar_color="@color/divider"
+        app:tl_indicator_anim_enable="true"
+        app:tl_indicator_bounce_enable="false"
+        app:tl_indicator_color="@color/white"
+        app:tl_indicator_corner_radius="11dp"
+        app:tl_indicator_margin_bottom="1dp"
+        app:tl_indicator_margin_left="1dp"
+        app:tl_indicator_margin_right="1dp"
+        app:tl_indicator_margin_top="1dp"
+        app:tl_tab_padding="8dp"
+        app:tl_bar_stroke_color="@color/divider"
+        app:tl_textSelectColor="@color/fontColor333"
+        app:tl_textUnselectColor="@color/colorGray999"
+        app:tl_textsize="@dimen/sp_11" />
 
-        <TextView
-            android:id="@+id/tv_squad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/dp_5"
-            android:background="@drawable/tab_data_selector"
-            android:text="资料小组"
-            android:textSize="@dimen/sp_12" />
 
-        <TextView
-            android:id="@+id/tv_news"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/dp_5"
-            android:background="@drawable/tab_data_selector"
-            android:text="最新精华"
-            android:textSize="@dimen/sp_12" />
 
-    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_data"

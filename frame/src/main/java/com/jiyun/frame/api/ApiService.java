@@ -1,9 +1,12 @@
 package com.jiyun.frame.api;
 
+import java.util.List;
 import java.util.Map;
 
+import com.google.gson.JsonObject;
 import com.jiyun.bean.CourseDrillBean;
 import com.jiyun.bean.DataSquadBean;
+import com.jiyun.bean.IndexCommondEntity;
 import com.jiyun.bean.NewsEliteBean;
 import com.jiyun.frame.bean.BaseInfo;
 import com.jiyun.frame.bean.LeadBean;
@@ -52,5 +55,16 @@ public interface ApiService {
 
     @GET("group/getThreadEssence") //最新精华
     Observable<NewsEliteBean> getNewsElite(@QueryMap Map<String,Object>map);
+
+
+
+    @POST("lesson/getIndexCommend")//主页面1
+    @FormUrlEncoded
+    Observable<BaseInfo<List<IndexCommondEntity>>> getCommonList(@FieldMap Map<String,Object> map);
+
+
+    @POST("lesson/getCarouselphoto")//banner
+    @FormUrlEncoded
+    Observable<JsonObject> getBannerList(@FieldMap Map<String,Object> map);
 
 }
