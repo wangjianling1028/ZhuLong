@@ -23,6 +23,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 public interface ApiService {
     @FormUrlEncoded
@@ -66,5 +67,14 @@ public interface ApiService {
     @POST("lesson/getCarouselphoto")//banner
     @FormUrlEncoded
     Observable<JsonObject> getBannerList(@FieldMap Map<String,Object> map);
+
+    //不关注  已关注
+    @POST("removeGroup")
+    @FormUrlEncoded
+    Observable<BaseInfo>  removeFocus( @FieldMap Map<String,Object> params);
+
+    @POST("joingroup")
+    @FormUrlEncoded
+    Observable<BaseInfo> focus( @FieldMap Map<String,Object> params);
 
 }

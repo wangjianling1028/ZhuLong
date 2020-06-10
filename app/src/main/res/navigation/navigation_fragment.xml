@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+    <tab_fragment
+        android:id="@+id/homeFragment"
+        android:name="com.jiyun.zhulong.fragment.HomeFragment"
+        android:label="HomeFragment">
+
+        <!--  <action
+            android:id="@+id/toAdvert"
+            app:destination="@id/advertFragment" />-->
+    </tab_fragment>
+    <tab_fragment
+        android:id="@+id/courseFragment"
+        android:name="com.jiyun.zhulong.fragment.CourseFragment"
+        android:label="CourseFragment" />
+    <tab_fragment
+        android:id="@+id/vipFragment"
+        android:name="com.jiyun.zhulong.fragment.VIPFragment"
+        android:label="VIPFragment" />
+    <tab_fragment
+        android:id="@+id/tabDataFragment"
+        android:name="com.jiyun.zhulong.fragment.TabDataFragment"
+        android:label="TabDataFragment" />
+    <tab_fragment
+        android:id="@+id/mineFragment"
+        android:name="com.jiyun.zhulong.fragment.MineFragment"
+        android:label="MineFragment" />
+</navigation>

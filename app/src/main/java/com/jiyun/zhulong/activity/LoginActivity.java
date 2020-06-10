@@ -1,6 +1,9 @@
 package com.jiyun.zhulong.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jiyun.frame.api.ApiConfig;
 import com.jiyun.frame.api.LoadTypeConfig;
@@ -18,6 +21,8 @@ import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -26,6 +31,14 @@ import io.reactivex.schedulers.Schedulers;
 public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginViewCallBack {
     @BindView(R.id.login_view)
     LoginView mLoginView;
+    @BindView(R.id.close_login)
+    ImageView closeLogin;
+    @BindView(R.id.login_by_qq)
+    ImageView loginByQq;
+    @BindView(R.id.login_by_wx)
+    ImageView loginByWx;
+    @BindView(R.id.third_login_desc)
+    TextView thirdLoginDesc;
     private Disposable mSubscribe;
     private String phoneNum;
     private long time = 60l;
@@ -122,5 +135,18 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
     protected void onDestroy() {
         super.onDestroy();
         doPre();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.close_login)
+    public void onClick() {
+        startActivity(new Intent(this,MyHomeActivity.class));
+        finish();
     }
 }

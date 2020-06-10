@@ -101,8 +101,7 @@ public class SpecialtyActivity extends BaseMvpActiviy {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SpecialtyActivity.this, HomeActivity.class);
-                startActivity(intent);
+
                 finish();
             }
         });

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="@dimen/dp_10"
+    android:paddingTop="@dimen/dp_15"
+    android:paddingBottom="@dimen/dp_15"
+    android:background="#CDCACA"
+   >
+
+
+
+    <com.jiyun.zhulong.design.RoundImage
+        android:id="@+id/round_photo"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_15"
+        android:src="@drawable/default_head"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:maxLines="2"
+        android:text="title"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintLeft_toRightOf="@+id/round_photo"
+        app:layout_constraintTop_toTopOf="@+id/round_photo" />
+
+    <ImageView
+        android:id="@+id/time_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:src="@drawable/ic_alarm"
+        app:layout_constraintLeft_toRightOf="@+id/round_photo"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_4"
+        android:text="12.00"
+        app:layout_constraintBottom_toBottomOf="@+id/time_image"
+        app:layout_constraintLeft_toRightOf="@+id/time_image"
+        app:layout_constraintTop_toTopOf="@+id/time_image" />
+</androidx.constraintlayout.widget.ConstraintLayout>

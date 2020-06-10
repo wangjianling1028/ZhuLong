@@ -17,4 +17,8 @@ public class ApiConfig {
     public static final int GET_HoME1=10;
     //主页面2
     public static final int GET_HoME2=11;
+
+    //关注
+    public static final int CLICK_TO_FOCUS = 12;
+    public static final int CLICK_CANCEL_FOCUS = 13;
 }

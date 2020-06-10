@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="@color/white"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <android.widget.TextView
+        android:id="@+id/tv_title_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="3"
+        android:textColor="@color/fontColor333"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/iv_photo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.TextView
+        android:id="@+id/tv_browse_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_post_browser"
+        android:drawablePadding="4dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/colorGray999"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_author_and_time" />
+
+    <android.widget.TextView
+        android:id="@+id/tv_comment_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_comment_gray"
+        android:drawablePadding="4dp"
+        android:textColor="@color/fontColorGray"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toRightOf="@+id/tv_browse_num"
+        app:layout_constraintTop_toTopOf="@id/tv_author_and_time" />
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="140dp"
+        android:layout_height="79dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_pic_load"
+        app:layout_constraintBottom_toTopOf="@id/tv_author_and_time"
+        app:layout_constraintLeft_toRightOf="@id/tv_title_left"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <android.widget.TextView
+        android:id="@+id/tv_author_and_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorGray999"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_photo" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrayEEE"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

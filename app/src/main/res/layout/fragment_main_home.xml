@@ -102,7 +102,7 @@
 
     <fragment
         android:id="@+id/navigation_home_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:name="com.jiyun.zhulong.base.BaseNavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
         app:defaultNavHost="false"

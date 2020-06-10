@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_10"
+    >
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/sp_15"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_5"
+            android:id="@+id/name_news"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="wrap_content"/>
+        
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@mipmap/ic_news_eye"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="@dimen/dp_10"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_3"
+                android:id="@+id/liulan_news"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_15"/>
+
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dp_60"
+                android:background="@mipmap/ic_news_message"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="@dimen/dp_10"/>
+
+
+            <TextView
+                android:id="@+id/tie_news"
+                android:layout_marginLeft="@dimen/dp_3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_15"/>
+
+
+        </LinearLayout>
+
+        
+    </LinearLayout>
+    
+    <ImageView
+        android:id="@+id/url_news"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_width="@dimen/dp_160"
+        android:layout_height="@dimen/dp_80"/>
+
+</LinearLayout>

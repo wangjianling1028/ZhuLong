@@ -2,6 +2,7 @@ package com.jiyun.zhulong.activity;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ import com.jiyun.zhulong.mypackage.MayTabSelectedListener;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class HomeActivity extends BaseMvpActiviy {
 
@@ -46,6 +48,8 @@ public class HomeActivity extends BaseMvpActiviy {
     LinearLayout headerLl;
     @BindView(R.id.tab)
     TabLayout tab;
+    @BindView(R.id.linear)
+    LinearLayout linear;
     private FragmentManager manager;
     private Fragment[] fragments;
     private SpecialtyBean.ResultBean.DataBean dataBean;
@@ -67,10 +71,12 @@ public class HomeActivity extends BaseMvpActiviy {
             dataBean = SharedPrefrenceUtils.getObject(this, ConstantKey.IS_SELECTDE);
             tvCareer.setText(dataBean.getSpecialty_name());
         }
+
         manager = getSupportFragmentManager();
         fragments = new Fragment[]{new MainHomeFragment(), new CourseFragment(), new VIPFragment(), new TabDataFragment(), new MineFragment()};
         String[] tabTitles = new String[]{"主页", "课程", "VIP", "资料", "我的"};
         int[] icons = new int[]{R.drawable.home_selector, R.drawable.course_selector, R.drawable.vip_selector, R.drawable.data_selector, R.drawable.mine_selector};
+
         TabLayoutUtil.getInstance().TabAddFrameLayout(R.id.fl, manager, tab, tabTitles, fragments, icons);
     }
 
@@ -142,6 +148,7 @@ public class HomeActivity extends BaseMvpActiviy {
 
     //连按两次返回键回退到桌面
     private long exitTime = 0;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
@@ -159,5 +166,12 @@ public class HomeActivity extends BaseMvpActiviy {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

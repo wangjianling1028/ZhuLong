@@ -14,17 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".activity.MyHomeActivity"></activity>
-
-
-        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.MyHomeActivity"/>
 
         <!--
-        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.MyHomeActivity"/>
         -->
 
         <activity android:name=".activity.MainActivity">
-
             <!-- 引导页面 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
