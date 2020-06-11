@@ -77,4 +77,25 @@ public interface ApiService {
     @FormUrlEncoded
     Observable<BaseInfo> focus( @FieldMap Map<String,Object> params);
 
+    //注册
+
+    @POST("checkMobileCode")
+    @FormUrlEncoded
+    Observable<BaseInfo> checkVerifyCode(@FieldMap Map<String,Object> parame);
+
+    @POST("checkMobileIsUse")
+    @FormUrlEncoded
+    Observable<BaseInfo> checkPhoneIsUsed(@Field("mobile")Object mobile);
+
+    @POST("sendMobileCode")
+    @FormUrlEncoded
+    Observable<BaseInfo> sendRegisterVerify(@Field("mobile")Object mobile);
+
+    @POST("user/usernameIsExist")
+    @FormUrlEncoded
+    Observable<BaseInfo> checkName(@Field("username") Object mobile);
+
+    @POST("userRegForSimple")
+    @FormUrlEncoded
+    Observable<BaseInfo> registerCompleteWithSubject(@FieldMap Map<String,Object> params);
 }

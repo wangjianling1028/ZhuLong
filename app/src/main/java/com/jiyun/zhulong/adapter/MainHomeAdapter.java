@@ -66,7 +66,8 @@ public class MainHomeAdapter extends RecyclerView.Adapter<MainHomeAdapter.ViewHo
     @Override
     public int getItemViewType(int position) {
         int type=RIGHT_IMAGE;
-        if (bannerData != null && bannerData.size() != 0 && position ==0)type =BANNER;
+        if (position == 0) type = BANNER;
+       // if (bannerData != null && bannerData.size() != 0 && position ==0)type =BANNER;
         else if (position ==1) type = LABEL;
         else if (liveData != null && liveData.size() !=0 && position ==2)type = LIVE;
         else{

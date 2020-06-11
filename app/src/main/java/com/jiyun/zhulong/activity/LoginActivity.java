@@ -39,6 +39,8 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
     ImageView loginByWx;
     @BindView(R.id.third_login_desc)
     TextView thirdLoginDesc;
+    @BindView(R.id.register_press)
+    TextView registerPress;
     private Disposable mSubscribe;
     private String phoneNum;
     private long time = 60l;
@@ -144,9 +146,9 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.close_login)
+
+    @OnClick(R.id.register_press)
     public void onClick() {
-        startActivity(new Intent(this,MyHomeActivity.class));
-        finish();
+        startActivity(new Intent(this,RegisterActivity.class));
     }
 }

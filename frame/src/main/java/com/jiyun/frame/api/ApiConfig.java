@@ -21,4 +21,11 @@ public class ApiConfig {
     //关注
     public static final int CLICK_TO_FOCUS = 12;
     public static final int CLICK_CANCEL_FOCUS = 13;
+
+    //注册
+    public static final int REGISTER_PHONE = 14;
+    public static final int CHECK_PHONE_IS_USED = 15;
+    public static final int SEND_REGISTER_VERIFY = 16;
+    public static final int NET_CHECK_USERNAME = 17;
+    public static final int COMPLETE_REGISTER_WITH_SUBJECT = 18;
 }

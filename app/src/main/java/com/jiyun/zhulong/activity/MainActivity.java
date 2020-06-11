@@ -91,7 +91,7 @@ public class MainActivity extends BaseMvpActiviy {
         //获取手机宽像素和高像素
         getScreenWH();
         //设置状态栏为深灰色
-        getWindow().setStatusBarColor(Color.DKGRAY);
+       // getWindow().setStatusBarColor(Color.DKGRAY);
         Glide.with(this).load(R.mipmap.ic_splash).into(mHomeTopImg);
     }
 

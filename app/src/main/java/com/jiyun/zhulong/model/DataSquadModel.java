@@ -27,12 +27,14 @@ public class DataSquadModel implements ICommonModel {
              case ApiConfig.CLICK_CANCEL_FOCUS:
                 // ParamHashMap add = new ParamHashMap().add("group_id", object[0]).add("type", 1).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
                  Map<String,Object> add = (Map<String, Object>) object[0];
-                    netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").removeFocus(add),iCommonPresenter,apiConfig,loadTypeConfig,object[0]);
+                 int removePosi= (int) object[1];
+                    netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").removeFocus(add),iCommonPresenter,apiConfig,loadTypeConfig,removePosi);
                  break;
              case ApiConfig.CLICK_TO_FOCUS:
                //  ParamHashMap add1 = new ParamHashMap().add("gid", object[0]).add("group_name", object[1]).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
                  Map<String,Object> add1 = (Map<String, Object>) object[0];
-                    netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").focus(add1),iCommonPresenter,apiConfig,loadTypeConfig,object[1]);
+                 int focusPosi= (int) object[1];
+                 netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").focus(add1),iCommonPresenter,apiConfig,loadTypeConfig,focusPosi);
                  break;
         }
 

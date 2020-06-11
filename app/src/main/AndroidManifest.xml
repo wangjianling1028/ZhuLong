@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jiyun.zhulong">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".base.Application1907"
         android:allowBackup="true"
@@ -13,14 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".activity.MyHomeActivity"/>
-
-        <!--
-        <activity android:name=".activity.MyHomeActivity"/>
-        -->
-
+        <activity android:name=".activity.RegisterPhoneActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.MyHomeActivity" /> <!-- <activity android:name=".activity.MyHomeActivity"/> -->
         <activity android:name=".activity.MainActivity">
+
             <!-- 引导页面 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,14 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.LoginActivity">
 
             <!-- 登录界面 -->
 
         </activity>
-
-
         <activity android:name=".activity.SpecialtyActivity">
 
             <!-- 专业选择页 -->
@@ -44,5 +36,7 @@
         <activity android:name=".activity.WebActivity" />
         <activity android:name="com.jiyun.fuli.activity.FuliActivity" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

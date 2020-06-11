@@ -1,5 +1,6 @@
 package com.jiyun.tabdata.fragment;
 
+import android.content.Intent;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import com.jiyun.frame.context.FrameApplication;
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.frame.utils.ParamHashMap;
 import com.jiyun.zhulong.R;
+import com.jiyun.zhulong.activity.LoginActivity;
 import com.jiyun.zhulong.adapter.DataSquadRVAdapter;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
@@ -72,12 +74,17 @@ public class DataSquadFragment extends BaseMvpFragment  {
                         break;
                     case FOCUS_TYPE:
                         DataSquadBean.ResultBean entiy = resultBeans.get(pos);
-                        if (entiy.isFocus()){ // 已关注  取消关注
-                            ParamHashMap cancelMap = new ParamHashMap().add("group_id", resultBean.getGid()).add("type", 1).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
-                            mPresenter.getData(ApiConfig.CLICK_CANCEL_FOCUS, LoadTypeConfig.NORMAL, cancelMap,pos);
-                        }else{  // 没有关注 点击关注
-                            ParamHashMap addMap = new ParamHashMap().add("gid", resultBean.getGid()).add("group_name", resultBean.getGroup_name()).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
-                            mPresenter.getData(ApiConfig.CLICK_TO_FOCUS, LoadTypeConfig.NORMAL, addMap,pos);
+                        boolean login = FrameApplication.getFrameApplication().isLogin();
+                        if (login){
+                            if (entiy.isFocus()){ // 已关注  取消关注
+                                ParamHashMap cancelMap = new ParamHashMap().add("group_id", resultBean.getGid()).add("type", 1).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
+                                mPresenter.getData(ApiConfig.CLICK_CANCEL_FOCUS, LoadTypeConfig.NORMAL, cancelMap,pos);
+                            }else{  // 没有关注 点击关注
+                                ParamHashMap addMap = new ParamHashMap().add("gid", resultBean.getGid()).add("group_name", resultBean.getGroup_name()).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
+                                mPresenter.getData(ApiConfig.CLICK_TO_FOCUS, LoadTypeConfig.NORMAL, addMap,pos);
+                            }
+                        }else{
+                            startActivity(new Intent(getActivity(), LoginActivity.class));
                         }
                         break;
                 }
@@ -95,7 +102,7 @@ public class DataSquadFragment extends BaseMvpFragment  {
 
 
     @Override
-    protected void onSuccess(int apiConfig, int loadTypeConfig, Object[] object) {
+    protected void onSuccess(int apiConfig,int loadTypeConfig, Object[] object) {
         switch (apiConfig) {
             case ApiConfig.GET_SQUAD_DATA:
                 DataSquadBean dataSquadBean = (DataSquadBean) object[0];
@@ -107,7 +114,7 @@ public class DataSquadFragment extends BaseMvpFragment  {
                 break;
             case ApiConfig.CLICK_CANCEL_FOCUS:
                 BaseInfo base = (BaseInfo) object[0];
-                int clickPos = (int) object[1];
+                int clickPos= (int) object[1];
                 if (base.isSuccess()){
                     showToast("取消成功");
                     resultBeans.get(clickPos).setIs_ftop(0);
@@ -125,8 +132,6 @@ public class DataSquadFragment extends BaseMvpFragment  {
                 break;
         }
     }
-
-
 
     @Override
     public void initListener() {

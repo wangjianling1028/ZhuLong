@@ -97,6 +97,7 @@ public class SpecialtyActivity extends BaseMvpActiviy {
                 finish();
             }
         });
+
         //点击图片跳转首页页面
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
