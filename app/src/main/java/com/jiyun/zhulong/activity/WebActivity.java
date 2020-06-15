@@ -20,13 +20,6 @@ public class WebActivity extends BaseMvpActiviy {
     @BindView(R.id.web)
     WebView web;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
-        ButterKnife.bind(this);
-        initView();
-    }
 
     @Override
     protected int setLayout() {

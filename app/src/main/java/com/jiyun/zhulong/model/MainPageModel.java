@@ -22,12 +22,10 @@ public class MainPageModel implements ICommonModel {
         switch (apiConfig){
             case ApiConfig.GET_HoME1:
                 Map<String,Object> map = (Map<String, Object>) object[0];
-                //ParamHashMap map = new ParamHashMap().add("specialty_id", "1").add("page", 2).add("limit", 10);
                 netManager.netWork(netManager.getService("https://edu.zhulong.com/openapi/").getCommonList(map),iCommonPresenter,apiConfig,loadTypeConfig);
                 break;
             case ApiConfig.GET_HoME2:
                 Map<String,Object> map1 = (Map<String, Object>) object[0];
-               // ParamHashMap map1 = new ParamHashMap().add("pro", "1").add("more_live", 1).add("is_new", 1).add("new_banner", 1);
                 netManager.netWork(netManager.getService("https://edu.zhulong.com/openapi/").getBannerList(map1),iCommonPresenter,apiConfig,loadTypeConfig);
                 break;
         }

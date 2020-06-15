@@ -116,7 +116,7 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
                         for (BannerLiveInfo.Carousel data : info.Carousel) {
                             bannerData.add(data.thumb);
                         }
-                        liveData.addAll(info.live);
+   //                     liveData.addAll(info.live);
                         banLive = true;
                         if (mainList) {
                             mAdapter.notifyDataSetChanged();
@@ -128,23 +128,18 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
                 }
                 break;
         }
-
-
     }
 
-
-
-
     @Override
-    public void dataType(int mode) {
-        if (mode == LoadTypeConfig.REFRESH) {
-            mainList = false;
-            banLive = false;
-            mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL,1);
-            mPresenter.getData(ApiConfig.GET_HoME2, LoadTypeConfig.NORMAL, map);
-        } else {
-           // currentPage++;
-            mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.LOADMORE, add);
-        }
+        public void dataType(int mode) {
+            if (mode == LoadTypeConfig.REFRESH) {
+                mainList = false;
+                banLive = false;
+                mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL,1);
+                mPresenter.getData(ApiConfig.GET_HoME2, LoadTypeConfig.NORMAL, map);
+            } else {
+                // currentPage++;
+                mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.LOADMORE, add);
+            }
     }
 }

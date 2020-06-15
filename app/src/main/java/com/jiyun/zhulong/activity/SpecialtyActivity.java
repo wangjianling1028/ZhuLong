@@ -94,7 +94,8 @@ public class SpecialtyActivity extends BaseMvpActiviy {
         adapter.setOnItemClickListener(new SpecialtyRvAdapter.OnGroupItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                finish();
+              //  finish();
+               startActivity(new Intent(SpecialtyActivity.this,MyHomeActivity.class));
             }
         });
 
@@ -102,8 +103,7 @@ public class SpecialtyActivity extends BaseMvpActiviy {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                finish();
+               finish();
             }
         });
     }

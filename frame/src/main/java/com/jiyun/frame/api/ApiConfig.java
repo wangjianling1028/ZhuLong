@@ -28,4 +28,10 @@ public class ApiConfig {
     public static final int SEND_REGISTER_VERIFY = 16;
     public static final int NET_CHECK_USERNAME = 17;
     public static final int COMPLETE_REGISTER_WITH_SUBJECT = 18;
+    //登录
+    public static final int ACCOUNT_LOGIN = 19;
+
+    //vip
+    public static final int VIP_BANNER_DATA_INFO = 20;
+    public static final int VIP_BOTTOM_DATA_INFO = 21;
 }

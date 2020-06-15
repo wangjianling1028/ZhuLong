@@ -2,6 +2,8 @@ package com.jiyun.zhulong.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,9 +43,16 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
     TextView thirdLoginDesc;
     @BindView(R.id.register_press)
     TextView registerPress;
+    @BindView(R.id.logo_image)
+    ImageView logoImage;
+    @BindView(R.id.forgot_pwd)
+    TextView forgotPwd;
+    @BindView(R.id.base_line)
+    View baseLine;
     private Disposable mSubscribe;
     private String phoneNum;
     private long time = 60l;
+    private String mFromType;
 
 
     @Override
@@ -58,6 +67,7 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
 
     @Override
     protected void initView() {
+        mFromType = getIntent().getStringExtra("fromType");
         mLoginView.setLoginViewCallBack(this);
     }
 
@@ -76,13 +86,16 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
                 }
                 goTime();
                 break;
+
             case ApiConfig.VERIFY_LOGIN:
+            case ApiConfig.ACCOUNT_LOGIN:
                 BaseInfo<LoginInfo> baseInfo = (BaseInfo<LoginInfo>) objects[0];
                 LoginInfo loginInfo = baseInfo.result;
                 loginInfo.login_name = phoneNum;
                 mApplication.setLoginInfo(loginInfo);
                 mPresenter.getData(ApiConfig.GET_HEADER_INFO, LoadTypeConfig.NORMAL);
                 break;
+
             case ApiConfig.GET_HEADER_INFO:
                 PersonHeader personHeader = ((BaseInfo<PersonHeader>) objects[0]).result;
                 mApplication.getLoginInfo().personHeader = personHeader;
@@ -91,6 +104,13 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
                 showLog("登录成功，-------用户信息：" + SharedPrefrenceUtils.getObject(this, ConstantKey.LOGIN_INFO));
                 jump();
                 break;
+
+               /* BaseInfo<LoginInfo> baseInfo1 = (BaseInfo<LoginInfo>) objects[0];
+                LoginInfo loginInfo1 = baseInfo1.result;
+                if (!TextUtils.isEmpty(phoneNum)) loginInfo1.login_name = phoneNum;
+                mApplication.setLoginInfo(loginInfo1);
+                mPresenter.getData(ApiConfig.GET_HEADER_INFO,LoadTypeConfig.NORMAL);
+                break;*/
         }
     }
 
@@ -131,6 +151,10 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
         doPre();
         if (mLoginView.mCurrentLoginType == mLoginView.SECURITY_TYPE)
             mPresenter.getData(ApiConfig.VERIFY_LOGIN, LoadTypeConfig.NORMAL, userName, pwd);
+        else {
+            mPresenter.getData(ApiConfig.ACCOUNT_LOGIN, LoadTypeConfig.NORMAL, userName, pwd);
+
+        }
     }
 
     @Override
@@ -146,9 +170,15 @@ public class LoginActivity extends BaseMvpActiviy implements LoginView.LoginView
         ButterKnife.bind(this);
     }
 
-
-    @OnClick(R.id.register_press)
-    public void onClick() {
-        startActivity(new Intent(this,RegisterActivity.class));
+    @OnClick({R.id.close_login, R.id.register_press})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.close_login:
+                  finish();
+                break;
+            case R.id.register_press:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
+        }
     }
 }

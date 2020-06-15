@@ -8,6 +8,8 @@ import com.jiyun.bean.CourseDrillBean;
 import com.jiyun.bean.DataSquadBean;
 import com.jiyun.bean.IndexCommondEntity;
 import com.jiyun.bean.NewsEliteBean;
+import com.jiyun.bean.VIPBannerBean;
+import com.jiyun.bean.VIPBottomDataBean;
 import com.jiyun.frame.bean.BaseInfo;
 import com.jiyun.frame.bean.LeadBean;
 import com.jiyun.frame.bean.FuliBean;
@@ -98,4 +100,15 @@ public interface ApiService {
     @POST("userRegForSimple")
     @FormUrlEncoded
     Observable<BaseInfo> registerCompleteWithSubject(@FieldMap Map<String,Object> params);
-}
+
+    @POST("user/userLoginNewAuth")
+    @FormUrlEncoded
+    Observable<BaseInfo<LoginInfo>> loginByAccount(@FieldMap Map<String,Object> params);
+
+    //vip
+    @GET("lesson/get_new_vip")
+    Observable<VIPBannerBean> getVIPBannerData();
+
+    @GET("lesson/getVipSmallLessonList")
+    Observable<VIPBottomDataBean> getVIPBottomData(@QueryMap Map<String,Object> map);
+ }
