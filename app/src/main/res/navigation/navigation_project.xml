@@ -11,6 +11,12 @@
             android:id="@+id/toAdvert"
             app:destination="@id/advertFragment" />-->
     </fragment>
+
+
+    <fragment
+        android:id="@+id/dataGroupDetailFragment"
+        android:name="com.jiyun.zhulong.fragment.DataGroupDetailFragment"
+        android:label="DataGroupDetailFragment" />
     <!--<fragment
         android:id="@+id/advertFragment"
         android:name="com.teach.kotlinlearn.ui.fragment.AdvertFragment"

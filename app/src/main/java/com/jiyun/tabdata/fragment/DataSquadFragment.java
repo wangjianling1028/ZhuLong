@@ -1,6 +1,7 @@
 package com.jiyun.tabdata.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,11 +11,15 @@ import com.jiyun.bean.DataSquadBean;
 import com.jiyun.frame.api.ApiConfig;
 import com.jiyun.frame.api.LoadTypeConfig;
 import com.jiyun.frame.bean.BaseInfo;
+import com.jiyun.frame.bean.SpecialtyBean;
+import com.jiyun.frame.constants.ConstantKey;
 import com.jiyun.frame.context.FrameApplication;
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.frame.utils.ParamHashMap;
 import com.jiyun.zhulong.R;
+import com.jiyun.zhulong.activity.HomeActivity;
 import com.jiyun.zhulong.activity.LoginActivity;
+import com.jiyun.zhulong.activity.MyHomeActivity;
 import com.jiyun.zhulong.adapter.DataSquadRVAdapter;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
@@ -22,6 +27,7 @@ import com.jiyun.zhulong.interfaces.DataListener;
 import com.jiyun.zhulong.interfaces.OnRecyclerItemClick;
 import com.jiyun.zhulong.model.DataSquadModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +38,7 @@ import butterknife.BindView;
 import static com.jiyun.zhulong.adapter.DataSquadRVAdapter.FOCUS_TYPE;
 import static com.jiyun.zhulong.adapter.DataSquadRVAdapter.ITEM_TYPE;
 
-/**
- * ：      --
- * 创建于： 2020/6/6 15:10
- * 邮箱：1750827655@qq.com
- */
+
 public class DataSquadFragment extends BaseMvpFragment  {
 
     @BindView(R.id.recyclerView)
@@ -47,6 +49,9 @@ public class DataSquadFragment extends BaseMvpFragment  {
     private ArrayList<DataSquadBean.ResultBean> resultBeans;
     private DataSquadRVAdapter adapter;
     private ParamHashMap map;
+
+    private SpecialtyBean.ResultBean.DataBean dataBean;
+    private int fid;
 
     @Override
     protected int setLayout() {
@@ -60,6 +65,11 @@ public class DataSquadFragment extends BaseMvpFragment  {
 
     @Override
     protected void initView(View view) {
+        if (SharedPrefrenceUtils.getObject(getActivity(), ConstantKey.IS_SELECTDE) != null) {
+            dataBean = SharedPrefrenceUtils.getObject(getActivity(), ConstantKey.IS_SELECTDE);
+            fid = dataBean.getFid();
+        }
+
         datasquadRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         resultBeans = new ArrayList<>();
         adapter = new DataSquadRVAdapter(getActivity(), resultBeans);
@@ -70,8 +80,15 @@ public class DataSquadFragment extends BaseMvpFragment  {
             public void onItemClick(int pos, Object[] pTS) {
                 DataSquadBean.ResultBean resultBean = resultBeans.get(pos);
                 switch ((int)pTS[0]){
+
                     case ITEM_TYPE:
+                        MyHomeActivity activity = (MyHomeActivity) getActivity();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(ConstantKey.GROU_TO_DETAIL_GID,resultBeans.get(pos).getGid());
+                        activity.navController.navigate(R.id.dataGroupDetailFragment,bundle);
                         break;
+
+
                     case FOCUS_TYPE:
                         DataSquadBean.ResultBean entiy = resultBeans.get(pos);
                         boolean login = FrameApplication.getFrameApplication().isLogin();
@@ -96,7 +113,7 @@ public class DataSquadFragment extends BaseMvpFragment  {
 
     @Override
     protected void initData() {
-        map = new ParamHashMap().add("page", page).add("type", 1).add("fid", 29);
+        map = new ParamHashMap().add("page", page).add("type", 1).add("fid", fid);
         mPresenter.getData(ApiConfig.GET_SQUAD_DATA, LoadTypeConfig.NORMAL, map);
     }
 
@@ -140,14 +157,14 @@ public class DataSquadFragment extends BaseMvpFragment  {
             @Override
             public void dataType(int loadTypeConfig) {
                 if (loadTypeConfig == LoadTypeConfig.LOADMORE) {
-                    //   page++;
-                    // map = new ParamHashMap().add("page", page).add("type", 1).add("fid", 29);
-                    //  mPresenter.getData(ApiConfig.GET_SQUAD_DATA, LoadTypeConfig.LOADMORE, map);
+                       page++;
+                     map = new ParamHashMap().add("page", page).add("type", 1).add("fid", fid);
+                     mPresenter.getData(ApiConfig.GET_SQUAD_DATA, LoadTypeConfig.LOADMORE, map);
                 }
                 if (loadTypeConfig == LoadTypeConfig.REFRESH) {
                     page = 1;
                     resultBeans.clear();
-                    map = new ParamHashMap().add("page", page).add("type", 1).add("fid", 29);
+                    map = new ParamHashMap().add("page", page).add("type", 1).add("fid", fid);
                     mPresenter.getData(ApiConfig.GET_SQUAD_DATA, LoadTypeConfig.REFRESH, map);
                 }
             }

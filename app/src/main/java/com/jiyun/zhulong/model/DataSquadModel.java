@@ -36,6 +36,12 @@ public class DataSquadModel implements ICommonModel {
                  int focusPosi= (int) object[1];
                  netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").focus(add1),iCommonPresenter,apiConfig,loadTypeConfig,focusPosi);
                  break;
+            case ApiConfig.GROUP_DETAIL:
+                netManager.netWork(netManager.getService("https://bbs.zhulong.com/openapi/").getGroupDetail(object[0]),iCommonPresenter,apiConfig,loadTypeConfig);
+                break;
+            case ApiConfig.GROUP_DETAIL_FOOTER_DATA:
+                netManager.netWork(netManager.getService("https://bbs.zhulong.com/openapi/").getGroupDetailFooterData((Map<String, Object>) object[0]),iCommonPresenter,apiConfig,loadTypeConfig,object[0]);
+                break;
         }
 
     }

@@ -3,6 +3,7 @@ package com.jiyun.zhulong.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -34,6 +35,7 @@ import com.jiyun.zhulong.model.TestModel;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
 import butterknife.BindView;
+
 
 public class MainActivity extends BaseMvpActiviy {
 

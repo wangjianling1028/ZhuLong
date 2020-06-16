@@ -6,6 +6,7 @@ import java.util.Map;
 import com.google.gson.JsonObject;
 import com.jiyun.bean.CourseDrillBean;
 import com.jiyun.bean.DataSquadBean;
+import com.jiyun.bean.GroupDetailEntity;
 import com.jiyun.bean.IndexCommondEntity;
 import com.jiyun.bean.NewsEliteBean;
 import com.jiyun.bean.VIPBannerBean;
@@ -111,4 +112,22 @@ public interface ApiService {
 
     @GET("lesson/getVipSmallLessonList")
     Observable<VIPBottomDataBean> getVIPBottomData(@QueryMap Map<String,Object> map);
- }
+    //微信登录
+    @GET("access_token")
+    Observable<JsonObject> getWechatToken(@QueryMap Map<String,Object> map);
+
+    @POST("thirdlogin")
+    @FormUrlEncoded
+    Observable<BaseInfo<LoginInfo>> loginByAccounts(@FieldMap Map<String,Object> map);
+
+    @POST("newThirdbind")
+    @FormUrlEncoded
+    Observable<BaseInfo> bindThirdAccount(@FieldMap Map<String,Object> map);
+
+    //资料详情
+    @GET("group/getGroupThreadList")
+    Observable<BaseInfo<GroupDetailEntity>> getGroupDetail(@Query("gid") Object object);
+
+    @GET("group/getGroupThreadList")
+    Observable<BaseInfo<GroupDetailEntity>> getGroupDetailFooterData(@QueryMap Map<String,Object> parmas);
+}

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.jiyun.zhulong">
 
     <application
@@ -11,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.RegisterPhoneActivity"></activity>
+        <activity android:name=".activity.ThirdAccoutBindActivity"></activity>
+        <activity android:name=".activity.RegisterPhoneActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.MyHomeActivity" /> <!-- <activity android:name=".activity.MyHomeActivity"/> -->
         <activity android:name=".activity.MainActivity">
@@ -34,7 +36,15 @@
 
         </activity>
         <activity android:name=".activity.WebActivity" />
-        <activity android:name="com.jiyun.fuli.activity.FuliActivity" />
+        <activity android:name="com.jiyun.fuli.activity.FuliActivity" /> <!-- 微信回调的activity -->
+        <activity
+            android:name="com.zhulong.eduvideo.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenLayout"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

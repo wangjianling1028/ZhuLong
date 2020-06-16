@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jiyun.bean.NewsEliteBean;
 import com.jiyun.frame.api.ApiConfig;
 import com.jiyun.frame.api.LoadTypeConfig;
+import com.jiyun.frame.bean.SpecialtyBean;
+import com.jiyun.frame.constants.ConstantKey;
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.frame.utils.ParamHashMap;
 import com.jiyun.zhulong.R;
@@ -18,17 +20,14 @@ import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
 import com.jiyun.zhulong.model.NewsEliteMolder;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-/**
- * ：      --
- * 创建于： 2020/6/6 15:10
- * 邮箱：1750827655@qq.com
- */
+
 public class NewsEliteFragment extends BaseMvpFragment {
     @BindView(R.id.recyclerView)
     RecyclerView mRecyNewsElite;
@@ -38,6 +37,8 @@ public class NewsEliteFragment extends BaseMvpFragment {
     private int page = 1;
     private ArrayList<NewsEliteBean.ResultBean> resultBeans;
     private NewsEliteAdapter adapter;
+    private SpecialtyBean.ResultBean.DataBean dataBean;
+    private int fid;
 
     @Override
     protected int setLayout() {
@@ -51,6 +52,12 @@ public class NewsEliteFragment extends BaseMvpFragment {
 
     @Override
     protected void initView(View view) {
+
+        if (SharedPrefrenceUtils.getObject(getActivity(), ConstantKey.IS_SELECTDE) != null) {
+            dataBean = SharedPrefrenceUtils.getObject(getActivity(), ConstantKey.IS_SELECTDE);
+            fid = dataBean.getFid();
+        }
+
         mRecyNewsElite.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyNewsElite.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         resultBeans = new ArrayList<>();
@@ -66,13 +73,15 @@ public class NewsEliteFragment extends BaseMvpFragment {
             @Override
             public void dataType(int loadTypeConfig) {
                 if (loadTypeConfig == LoadTypeConfig.LOADMORE) {
-                  //  page++;
-                    /// initData();
+                    page++;
+                    ParamHashMap map = new ParamHashMap().add("page", page).add("fid", fid);
+                    mPresenter.getData(ApiConfig.GET_NEWS_DATA, LoadTypeConfig.NORMAL, map);
                 }
                 if (loadTypeConfig == LoadTypeConfig.REFRESH) {
                     page = 1;
                     resultBeans.clear();
-                    initData();
+                    ParamHashMap map = new ParamHashMap().add("page", page).add("fid", fid);
+                    mPresenter.getData(ApiConfig.GET_NEWS_DATA, LoadTypeConfig.NORMAL, map);
                 }
             }
         });
@@ -80,13 +89,8 @@ public class NewsEliteFragment extends BaseMvpFragment {
 
     @Override
     protected void initData() {
-        /*https://bbs.zhulong.com/openapi/group/getThreadEssence?
-        page=1&
-        fid=29&
-        uid=15063681&
-        time=1591368576*/
 
-        ParamHashMap map = new ParamHashMap().add("page", page).add("fid", 29).add("uid", 15063681).add("time", 1591368576);
+        ParamHashMap map = new ParamHashMap().add("page", page).add("fid", fid);
         mPresenter.getData(ApiConfig.GET_NEWS_DATA, LoadTypeConfig.NORMAL, map);
 
     }
@@ -99,6 +103,8 @@ public class NewsEliteFragment extends BaseMvpFragment {
                 List<NewsEliteBean.ResultBean> result = newsEliteBean.getResult();
                 resultBeans.addAll(result);
                 adapter.notifyDataSetChanged();
+                refreshLayout.finishRefresh();
+                refreshLayout.finishLoadMore();
                 break;
         }
     }

@@ -10,6 +10,8 @@ import com.jiyun.bean.IndexCommondEntity;
 import com.jiyun.frame.api.ApiConfig;
 import com.jiyun.frame.api.LoadTypeConfig;
 import com.jiyun.frame.bean.BaseInfo;
+import com.jiyun.frame.bean.SpecialtyBean;
+import com.jiyun.frame.constants.ConstantKey;
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.frame.utils.ParamHashMap;
 import com.jiyun.zhulong.R;
@@ -18,6 +20,7 @@ import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
 import com.jiyun.zhulong.model.MainPageModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +35,7 @@ import butterknife.BindView;
  * 创建于： 2020/6/5 11:43
  * 邮箱：1750827655@qq.com
  */
-public class HomeFragment extends BaseMvpFragment implements DataListener {
+public class HomeFragment extends BaseMvpFragment  {
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
@@ -45,6 +48,8 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
     private ParamHashMap add;
     private ParamHashMap map;
     private MainHomeAdapter mAdapter;
+    private SpecialtyBean.ResultBean.DataBean dataBean;
+    private String specialty_id;
 
     @Override
     protected int setLayout() {
@@ -58,6 +63,13 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
 
     @Override
     protected void initView(View view) {
+
+        if (SharedPrefrenceUtils.getObject(getActivity(), ConstantKey.IS_SELECTDE) != null) {
+            dataBean = SharedPrefrenceUtils.getObject(getActivity(), ConstantKey.IS_SELECTDE);
+            specialty_id = dataBean.getSpecialty_id();
+        }
+
+
         initRecyclerView(mRecyclerView);
         mAdapter = new MainHomeAdapter(bottomList, bannerData, liveData, getActivity());
         mRecyclerView.setAdapter(mAdapter);
@@ -66,10 +78,10 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
     @Override
     protected void initData() {
 
-        map = new ParamHashMap().add("specialty_id", "1").add("page", currentPage).add("limit", 10);
+        map = new ParamHashMap().add("specialty_id", specialty_id).add("page", currentPage).add("limit", 10);
         mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL, map);
 
-        add = new ParamHashMap().add("pro", "1").add("more_live", 1).add("is_new", 1).add("new_banner", 1);
+        add = new ParamHashMap().add("pro", specialty_id).add("more_live", 1).add("is_new", 1).add("new_banner", 1);
         mPresenter.getData(ApiConfig.GET_HoME2, LoadTypeConfig.NORMAL,add);
     }
 
@@ -116,7 +128,7 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
                         for (BannerLiveInfo.Carousel data : info.Carousel) {
                             bannerData.add(data.thumb);
                         }
-   //                     liveData.addAll(info.live);
+                        liveData.addAll(info.live);
                         banLive = true;
                         if (mainList) {
                             mAdapter.notifyDataSetChanged();
@@ -131,15 +143,22 @@ public class HomeFragment extends BaseMvpFragment implements DataListener {
     }
 
     @Override
-        public void dataType(int mode) {
-            if (mode == LoadTypeConfig.REFRESH) {
-                mainList = false;
-                banLive = false;
-                mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL,1);
-                mPresenter.getData(ApiConfig.GET_HoME2, LoadTypeConfig.NORMAL, map);
-            } else {
-                // currentPage++;
-                mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.LOADMORE, add);
+    public void initListener() {
+        super.initListener();
+        setSmartListener(mSmartLayout, new DataListener() {
+            @Override
+            public void dataType(int loadTypeConfig) {
+                if (loadTypeConfig == LoadTypeConfig.LOADMORE) {
+                    currentPage++;
+                    map = new ParamHashMap().add("specialty_id", specialty_id).add("page", currentPage).add("limit", 10);
+                    mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL, map);
+                }
+                if (loadTypeConfig == LoadTypeConfig.REFRESH) {
+                    currentPage = 1;
+                    map = new ParamHashMap().add("specialty_id", specialty_id).add("page", currentPage).add("limit", 10);
+                    mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL, map);
+                }
             }
+        });
     }
 }

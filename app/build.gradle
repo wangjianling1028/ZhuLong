@@ -1,11 +1,62 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "1870c0d6af8c6"
+    appSecret "07e1eb2892b079a0278e54eb94f0a39d"
+
+    ShareSDK {
+        devInfo {
+            version "3.6.8"
+
+            QZone {
+                id 3
+                sortId 3
+                appId "1105712307"
+                appKey "JrFqzftdwJeUq9fj"
+                shareByAppClient true
+                enable true
+            }
+
+            Wechat {
+                id 4
+                sortId 4
+                appId "wx4b6c402fee6860c8"
+                appKey "1278977f2848ee16708c656f66abf35a"
+                shareByAppClient true
+                enable true
+            }
+
+            WechatMoments {
+                id 5
+                sortId 5
+                appId "wx4b6c402fee6860c8"
+                appKey "1278977f2848ee16708c656f66abf35a"
+                shareByAppClient true
+                enable true
+            }
+
+            QQ {
+                id 6
+                sortId 6
+                appId "1105712307"
+                appKey "JrFqzftdwJeUq9fj"
+                shareByAppClient true
+                enable true
+            }
+        }
+    }
+}
+
+
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.jiyun.zhulong"
+     //   applicationId "com.jiyun.zhulong"
+        applicationId "com.zhulong.eduvideo"
         minSdkVersion 19
         //minSdkVersion 23
         targetSdkVersion 29
@@ -15,12 +66,27 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file(storeFileName)
+            storePassword storepwd
+            keyAlias alias
+            keyPassword keypwd
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug{
+            signingConfig signingConfigs.release
+        }
+
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -29,9 +95,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation files('libs\\libammsdk.jar')
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

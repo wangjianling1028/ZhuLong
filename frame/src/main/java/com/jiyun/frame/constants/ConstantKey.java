@@ -40,6 +40,8 @@ public class ConstantKey {
     public static final String SET_NEW_PWD = "set_new_pwd";
     public static final String SECRET_KEY = "screctKey";
     public static final String LOGIN_EXPIRE = "login_expire";
+    public static final String GROU_TO_DETAIL_GID = "grou_to_detail_gid";
+
     public static final int TRAINTAB = 3;
     public static final int BESTTAB = 1;
     public static final int PUBLICTAB = 2;

@@ -2,7 +2,9 @@ package com.jiyun.zhulong.model;
 
 import android.content.Context;
 
+import com.jiyun.bean.ThirdLoginData;
 import com.jiyun.frame.api.ApiConfig;
+import com.jiyun.frame.constants.ConstantKey;
 import com.jiyun.frame.context.FrameApplication;
 import com.jiyun.frame.interceptor.NetManager;
 import com.jiyun.frame.mvp.ICommonModel;
@@ -59,6 +61,29 @@ public class AccountModel implements ICommonModel {
                         .add("passwd", RsaUtil.encryptByPublic((String) object[1])).add("cookieday", "")
                         .add("fromUrl", "android").add("ignoreMobile", "0");
                 mManager.netWork(mManager.getService("https://passport.zhulong.com/openapi/").loginByAccount(deng), iCommonPresenter, apiConfig, loadTypeConfig);
+                break;
+                //微信登录
+            case ApiConfig.GET_WE_CHAT_TOKEN:
+                ParamHashMap wxParams = new ParamHashMap().add("appid", ConstantKey.WX_APP_ID).add("secret", ConstantKey.WX_APP_SECRET).add("code", object[0]).add("grant_type", "authorization_code");
+                mManager.netWork(mManager.getService("https://api.weixin.qq.com/sns/oauth2/").getWechatToken(wxParams),iCommonPresenter,apiConfig,loadTypeConfig);
+                break;
+
+            case ApiConfig.POST_WE_CHAT_LOGIN_INFO:
+                ThirdLoginData data = (ThirdLoginData) object[0];
+                ParamHashMap add2 = new ParamHashMap().add("openid", data.openid).add("type", data.type).add("url", "android");
+                mManager.netWork(mManager.getService("https://api.weixin.qq.com/sns/oauth2/").loginByAccounts(add2),iCommonPresenter,apiConfig,loadTypeConfig);
+                break;
+
+            case ApiConfig.BIND_ACCOUNT:
+                String accout = (String) object[0];
+                String password = (String) object[1];
+                ThirdLoginData thirdLoginData = (ThirdLoginData) object[2];
+                ParamHashMap thirdDataParam = new ParamHashMap().add("username", accout).add("password", RsaUtil.encryptByPublic(password))
+                        .add("openid", thirdLoginData.openid).add("t_token", thirdLoginData.token)
+                        .add("utime", thirdLoginData.utime).add("type", thirdLoginData.type)
+                        .add("url", "android").add("state", 1);
+                mManager.netWork(mManager.getService("https://passport.zhulong.com/api/").bindThirdAccount(thirdDataParam),iCommonPresenter,apiConfig,loadTypeConfig);
+
                 break;
         }
     }
