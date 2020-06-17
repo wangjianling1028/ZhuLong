@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterPhoneActivity">
+
+    <include layout="@layout/common_title_view" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/editArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/shape_bg_grey_stroke_line_bg"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificationCursor">
+
+        <ImageView
+            android:id="@+id/clearAccount"
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="@dimen/dp_46"
+            android:padding="@dimen/dp_15"
+            android:src="@mipmap/ic_delete"
+            android:visibility="invisible"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/accountContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入用户名　(不可更改，谨慎填写哦)"
+            android:imeOptions="actionNext"
+            android:paddingLeft="20dp"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColor="@color/fontColorblack"
+            android:textColorHint="@color/fontColorGreyB"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintBottom_toBottomOf="@+id/clearAccount"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/clearAccount"
+            app:layout_constraintTop_toTopOf="@+id/clearAccount" />
+
+        <View
+            android:id="@+id/cutLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/divider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clearAccount" />
+
+        <ImageView
+            android:id="@+id/visibleImage"
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="@dimen/dp_46"
+            android:padding="@dimen/dp_15"
+            android:src="@drawable/selector_login_eye"
+            android:visibility="invisible"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cutLine" />
+
+        <EditText
+            android:id="@+id/accountSecret"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入密码"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColor="@color/fontColorblack"
+            android:textColorHint="@color/fontColorGreyB"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintBottom_toBottomOf="@+id/visibleImage"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/visibleImage"
+            app:layout_constraintTop_toTopOf="@+id/visibleImage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/next_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_40"
+        android:background="@drawable/selector_change_color_btn_bg"
+        android:gravity="center"
+        android:padding="@dimen/dp_15"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintLeft_toLeftOf="@+id/editArea"
+        app:layout_constraintRight_toRightOf="@+id/editArea"
+        app:layout_constraintTop_toBottomOf="@+id/editArea" />
+
+</LinearLayout>

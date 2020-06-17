@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterActivity">
+
+    <include
+        android:id="@+id/titleView"
+        layout="@layout/common_title_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/verificationArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/shape_bg_grey_stroke_line_bg"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificationCursor">
+
+        <TextView
+            android:id="@+id/telephone_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginRight="@dimen/dp_20"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_30"
+            android:text="+86"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/telephone_cut"
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:background="@color/divider"
+            app:layout_constraintBottom_toBottomOf="@+id/telephone_desc"
+            app:layout_constraintLeft_toRightOf="@+id/telephone_desc"
+            app:layout_constraintTop_toTopOf="@+id/telephone_desc" />
+
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入手机号"
+            android:imeOptions="actionNext"
+            android:paddingLeft="20dp"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColor="@color/fontColorblack"
+            android:textColorHint="@color/fontColorGreyB"
+            android:textSize="@dimen/sp_15"
+            android:inputType="phone"
+            app:layout_constraintBottom_toBottomOf="@+id/telephone_desc"
+            app:layout_constraintLeft_toRightOf="@+id/telephone_cut"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/telephone_desc" />
+
+        <View
+            android:id="@+id/cutLine_telephone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/divider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/telephone_desc" />
+
+        <TextView
+            android:id="@+id/getVerification"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_46"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp_15"
+            android:text="获取验证码"
+            android:textColor="@color/red2e"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cutLine_telephone" />
+
+        <View
+            android:id="@+id/veri_cut"
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:background="@color/divider"
+            app:layout_constraintBottom_toBottomOf="@+id/getVerification"
+            app:layout_constraintRight_toLeftOf="@+id/getVerification"
+            app:layout_constraintTop_toTopOf="@+id/getVerification" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入密码"
+            android:imeOptions="actionNext"
+            android:paddingLeft="20dp"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColor="@color/fontColorblack"
+            android:textColorHint="@color/fontColorGreyB"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintBottom_toBottomOf="@+id/getVerification"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/veri_cut"
+            app:layout_constraintTop_toTopOf="@+id/getVerification" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/next_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_40"
+        android:background="@drawable/selector_change_color_btn_bg"
+        android:gravity="center"
+        android:padding="@dimen/dp_15"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintLeft_toLeftOf="@+id/editArea"
+        app:layout_constraintRight_toRightOf="@+id/editArea"
+        app:layout_constraintTop_toBottomOf="@+id/editArea" />
+
+
+</LinearLayout>
