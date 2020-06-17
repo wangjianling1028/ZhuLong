@@ -139,6 +139,10 @@
         <attr name="halfstart" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="ImageViewFillet">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
 
     <attr name="borderRadius" format="dimension" />
     <attr name="type">

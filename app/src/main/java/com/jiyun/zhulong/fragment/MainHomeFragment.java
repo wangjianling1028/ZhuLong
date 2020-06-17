@@ -3,6 +3,7 @@ package com.jiyun.zhulong.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.jiyun.frame.bean.SpecialtyBean;
 import com.jiyun.frame.constants.ConstantKey;
@@ -57,6 +59,23 @@ public class MainHomeFragment extends BaseMvpFragment implements NavController.O
     private final int HOME = 1, COURSE = 2, VIP = 3, TAB_DATA = 4, MINE = 5;
     private int selected;
     private SpecialtyBean.ResultBean.DataBean dataBean;
+
+
+    private String preFragment = "";
+    private String mCurrentFragment = "";
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        NavHostFragment.findNavController(this).addOnDestinationChangedListener(((controller, destination, arguments) -> {
+        mCurrentFragment = destination.getLabel().toString();
+        new Handler().postDelayed(() ->{
+        if (preFragment.equals("DataGroupDetailFragment") && mCurrentFragment.equals("MainHomeFragment"))
+            bottomTab.changeSelected(TAB_DATA);
+            preFragment = mCurrentFragment;
+        },50);
+        }));
+    }
 
     @Override
     protected int setLayout() {

@@ -9,6 +9,39 @@
         <item name="android:statusBarColor">#000000</item>
     </style>
 
+
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="playBottomTextViewStyle" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+    <!--加载圈-->
+    <style name="LoadProgressBarStyleLarge">
+        　　<item name="android:indeterminateDrawable">@drawable/progress_large_rotate</item>
+        　　<item name="android:minWidth">76dip</item>
+        　　<item name="android:maxWidth">76dip</item>
+        　　<item name="android:minHeight">76dip</item>
+        　　<item name="android:maxHeight">76dip</item>
+    </style>
+
+
+
+
+
     <!--MaterialSearchView搜索控件的样式-->
     <style name="MaterialSearchViewStyle">
         <!-- Background for the search bar -->

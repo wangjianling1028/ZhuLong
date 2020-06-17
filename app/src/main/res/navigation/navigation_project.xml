@@ -7,16 +7,25 @@
         android:id="@+id/mainHomeFragment"
         android:name="com.jiyun.zhulong.fragment.MainHomeFragment"
         android:label="MainHomeFragment">
-      <!--  <action
-            android:id="@+id/toAdvert"
-            app:destination="@id/advertFragment" />-->
+
+        <action
+            android:id="@+id/home_to_data_detail"
+            app:destination="@id/dataGroupDetailFragment" />
     </fragment>
 
 
     <fragment
         android:id="@+id/dataGroupDetailFragment"
         android:name="com.jiyun.zhulong.fragment.DataGroupDetailFragment"
-        android:label="DataGroupDetailFragment" />
+        android:label="DataGroupDetailFragment" >
+
+        <action
+            android:id="@+id/dataGroup_back_to_home"
+            app:popUpTo="@id/mainHomeFragment"/>
+    </fragment>
+
+
+
     <!--<fragment
         android:id="@+id/advertFragment"
         android:name="com.teach.kotlinlearn.ui.fragment.AdvertFragment"

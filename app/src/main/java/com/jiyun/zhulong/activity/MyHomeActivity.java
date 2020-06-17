@@ -52,7 +52,7 @@ public class MyHomeActivity extends BaseMvpActiviy implements NavController.OnDe
         String label = destination.getLabel().toString();
     }
 
-    //连按两次返回键回退到桌面
+   /* //连按两次返回键回退到桌面
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
@@ -70,5 +70,5 @@ public class MyHomeActivity extends BaseMvpActiviy implements NavController.OnDe
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
+    }*/
 }

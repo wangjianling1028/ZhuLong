@@ -68,6 +68,11 @@ public class BottomTabView extends RelativeLayout {
         typedArray.recycle();
     }
 
+    public void changeSelected(int pos){
+        defaultShowTab = pos;
+        setStyle();
+    }
+
     /**
      * 调用此方法给tab设置内容
      *

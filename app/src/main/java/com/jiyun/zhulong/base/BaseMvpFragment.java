@@ -28,9 +28,8 @@ public abstract class BaseMvpFragment<M extends ICommonModel> extends BaseFragme
         // Inflate the layout for this fragment
         View view = inflater.inflate(setLayout(), container, false);
         ButterKnife.bind(this, view);
-        mModel = setModel();
-        if (mModel != null)
-            mPresenter = new CommonPresenter(this, mModel);
+       if (mModel == null)mModel = setModel();
+        if (mModel != null) mPresenter = new CommonPresenter(this, mModel);
         initView(view);
         initData();
         initListener();

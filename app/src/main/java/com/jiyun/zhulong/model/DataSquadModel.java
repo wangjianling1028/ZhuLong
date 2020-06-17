@@ -40,7 +40,7 @@ public class DataSquadModel implements ICommonModel {
                 netManager.netWork(netManager.getService("https://bbs.zhulong.com/openapi/").getGroupDetail(object[0]),iCommonPresenter,apiConfig,loadTypeConfig);
                 break;
             case ApiConfig.GROUP_DETAIL_FOOTER_DATA:
-                netManager.netWork(netManager.getService("https://bbs.zhulong.com/openapi/").getGroupDetailFooterData((Map<String, Object>) object[0]),iCommonPresenter,apiConfig,loadTypeConfig,object[0]);
+                netManager.netWork(netManager.getService("https://bbs.zhulong.com/openapi/").getGroupDetailFooterData((Map<String, Object>) object[0]),iCommonPresenter,apiConfig,loadTypeConfig);
                 break;
         }
 
