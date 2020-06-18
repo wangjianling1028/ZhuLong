@@ -72,7 +72,7 @@ public abstract class BaseMvpActiviy<M extends ICommonModel> extends BaseActivit
 
     //跳转页面
     public void goToActivity() {
-        if (mApplication.isLogin()) {
+        if (mApplication.isLogin() ) {
             if (SharedPrefrenceUtils.getObject(this, ConstantKey.IS_SELECTDE) != null) {
                 startActivity(new Intent(this, MyHomeActivity.class));
             } else {

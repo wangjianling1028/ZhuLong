@@ -15,6 +15,7 @@ import com.jiyun.frame.utils.ParamHashMap;
 import com.jiyun.zhulong.R;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
+import com.jiyun.zhulong.loading.LoadView;
 import com.jiyun.zhulong.model.CourseModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
@@ -106,12 +107,14 @@ public class ChildCourseFragment extends BaseMvpFragment {
 
     @Override
     protected void initData() {
+        LoadView.getInstance(getActivity(), null).show();
         map = new ParamHashMap().add("page", page).add("course_type", course_type).add("specialty_id", specialty_id);
         mPresenter.getData(ApiConfig.GET_COURSE_DATA, LoadTypeConfig.NORMAL, map);
     }
 
     @Override
     protected void onSuccess(int apiConfig, int loadTypeConfig, Object[] object) {
+        LoadView.getInstance(getActivity(), null).dismiss();
         switch (apiConfig) {
             case ApiConfig.GET_COURSE_DATA:
                  CourseDrillBean courseDrillBeans = (CourseDrillBean) object[0];

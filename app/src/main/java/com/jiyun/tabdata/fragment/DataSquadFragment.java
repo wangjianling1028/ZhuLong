@@ -25,6 +25,7 @@ import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
 
 import com.jiyun.zhulong.interfaces.OnRecyclerItemClick;
+import com.jiyun.zhulong.loading.LoadView;
 import com.jiyun.zhulong.model.DataSquadModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
@@ -80,11 +81,11 @@ public class DataSquadFragment extends BaseMvpFragment  {
             public void onItemClick(int pos, Object[] pTS) {
                 DataSquadBean.ResultBean resultBean = resultBeans.get(pos);
                 switch ((int)pTS[0]){
-
                     case ITEM_TYPE:
                         MyHomeActivity activity = (MyHomeActivity) getActivity();
                         Bundle bundle = new Bundle();
                         bundle.putString(ConstantKey.GROU_TO_DETAIL_GID,resultBeans.get(pos).getGid());
+                        bundle.putString(ConstantKey.GROU_TO_DETAIL_NAME,resultBeans.get(pos).getGroup_name());
                         activity.navController.navigate(R.id.dataGroupDetailFragment,bundle);
                         break;
 
@@ -113,6 +114,8 @@ public class DataSquadFragment extends BaseMvpFragment  {
 
     @Override
     protected void initData() {
+        LoadView.getInstance(getActivity(), null).show();
+
         map = new ParamHashMap().add("page", page).add("type", 1).add("fid", fid);
         mPresenter.getData(ApiConfig.GET_SQUAD_DATA, LoadTypeConfig.NORMAL, map);
     }
@@ -120,6 +123,7 @@ public class DataSquadFragment extends BaseMvpFragment  {
 
     @Override
     protected void onSuccess(int apiConfig,int loadTypeConfig, Object[] object) {
+        LoadView.getInstance(getActivity(), null).dismiss();
         switch (apiConfig) {
             case ApiConfig.GET_SQUAD_DATA:
                 DataSquadBean dataSquadBean = (DataSquadBean) object[0];

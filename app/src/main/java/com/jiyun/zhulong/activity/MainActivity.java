@@ -40,7 +40,7 @@ import butterknife.BindView;
 public class MainActivity extends BaseMvpActiviy {
 
     @BindView(R.id.time_view)
-    TextView mTextView;
+    Button mTextView;
     @BindView(R.id.img_home_top)
     ImageView mHomeTopImg;
     @BindView(R.id.img_home_bottom)
@@ -62,6 +62,7 @@ public class MainActivity extends BaseMvpActiviy {
         @Override
         public boolean handleMessage(@NonNull Message message) {
             if (message.what == 0) {
+                mTextView.setVisibility(View.VISIBLE);
                 mTextView.setText("跳过" + time);
                 time--;
                 mHomeBottomImg.setVisibility(View.VISIBLE);

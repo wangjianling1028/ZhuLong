@@ -18,6 +18,7 @@ import com.jiyun.zhulong.R;
 import com.jiyun.zhulong.adapter.NewsEliteAdapter;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
+import com.jiyun.zhulong.loading.LoadView;
 import com.jiyun.zhulong.model.NewsEliteMolder;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
@@ -89,7 +90,7 @@ public class NewsEliteFragment extends BaseMvpFragment {
 
     @Override
     protected void initData() {
-
+        LoadView.getInstance(getActivity(), null).show();
         ParamHashMap map = new ParamHashMap().add("page", page).add("fid", fid);
         mPresenter.getData(ApiConfig.GET_NEWS_DATA, LoadTypeConfig.NORMAL, map);
 
@@ -97,6 +98,7 @@ public class NewsEliteFragment extends BaseMvpFragment {
 
     @Override
     protected void onSuccess(int apiConfig, int loadTypeConfig, Object[] object) {
+        LoadView.getInstance(getActivity(), null).dismiss();
         switch (apiConfig) {
             case ApiConfig.GET_NEWS_DATA:
                 NewsEliteBean newsEliteBean = (NewsEliteBean) object[0];

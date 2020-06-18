@@ -22,19 +22,24 @@ public class DataSquadModel implements ICommonModel {
         switch (apiConfig){
             case ApiConfig.GET_SQUAD_DATA:
                 Map<String,Object> map= (Map<String, Object>) object[0];
-                netManager.netWork(netManager.getService(mContext.getString(R.string.bbs_openapi)).getDataSquadData(map),iCommonPresenter,apiConfig,loadTypeConfig,object);
+                netManager.netWork(netManager.getService(mContext.getString(R.string.bbs_openapi)).getDataSquadData(map),iCommonPresenter,apiConfig,loadTypeConfig);
                 break;
              case ApiConfig.CLICK_CANCEL_FOCUS:
                 // ParamHashMap add = new ParamHashMap().add("group_id", object[0]).add("type", 1).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
                  Map<String,Object> add = (Map<String, Object>) object[0];
                  int removePosi= (int) object[1];
+                 if (object.length >1)
                     netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").removeFocus(add),iCommonPresenter,apiConfig,loadTypeConfig,removePosi);
+                 else
+                     netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").removeFocus(add),iCommonPresenter,apiConfig,loadTypeConfig);
                  break;
              case ApiConfig.CLICK_TO_FOCUS:
                //  ParamHashMap add1 = new ParamHashMap().add("gid", object[0]).add("group_name", object[1]).add("screctKey", FrameApplication.getFrameApplicationContext().getString(R.string.secrectKey_posting));
                  Map<String,Object> add1 = (Map<String, Object>) object[0];
-                 int focusPosi= (int) object[1];
-                 netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").focus(add1),iCommonPresenter,apiConfig,loadTypeConfig,focusPosi);
+                 if (object.length >1)
+                 netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").focus(add1),iCommonPresenter,apiConfig,loadTypeConfig,object[1]);
+                 else
+                     netManager.netWork(netManager.getService("https://bbs.zhulong.com/api/").focus(add1),iCommonPresenter,apiConfig,loadTypeConfig);
                  break;
             case ApiConfig.GROUP_DETAIL:
                 netManager.netWork(netManager.getService("https://bbs.zhulong.com/openapi/").getGroupDetail(object[0]),iCommonPresenter,apiConfig,loadTypeConfig);

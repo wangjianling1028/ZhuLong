@@ -18,6 +18,7 @@ import com.jiyun.zhulong.R;
 import com.jiyun.zhulong.adapter.VIPAdapter;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
+import com.jiyun.zhulong.loading.LoadView;
 import com.jiyun.zhulong.model.VipModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
@@ -78,11 +79,13 @@ public class VIPFragment extends BaseMvpFragment {
     }
 
     private void initBanner() {
+        LoadView.getInstance(getActivity(), null).show();
       mPresenter.getData(ApiConfig.VIP_BANNER_DATA_INFO, LoadTypeConfig.NORMAL);
     }
 
     @Override
     protected void onSuccess(int apiConfig, int loadTypeConfig, Object[] object) {
+        LoadView.getInstance(getActivity(), null).dismiss();
         switch (apiConfig){
             case ApiConfig.VIP_BANNER_DATA_INFO:
                 if (((VIPBannerBean)object[0]).getResult() !=null){

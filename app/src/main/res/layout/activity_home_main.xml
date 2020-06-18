@@ -9,10 +9,10 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <TextView
+    <Button
         android:id="@+id/time_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_20"
         android:layout_margin="@dimen/dp_10"
         android:layout_alignParentRight="true"
         android:background="@drawable/bg_ad_skip"

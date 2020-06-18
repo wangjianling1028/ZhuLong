@@ -18,6 +18,7 @@ import com.jiyun.zhulong.R;
 import com.jiyun.zhulong.adapter.MainHomeAdapter;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
+import com.jiyun.zhulong.loading.LoadView;
 import com.jiyun.zhulong.model.MainPageModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
@@ -77,7 +78,7 @@ public class HomeFragment extends BaseMvpFragment  {
 
     @Override
     protected void initData() {
-
+        LoadView.getInstance(getActivity(), null).show();
         map = new ParamHashMap().add("specialty_id", specialty_id).add("page", currentPage).add("limit", 10);
         mPresenter.getData(ApiConfig.GET_HoME1, LoadTypeConfig.NORMAL, map);
 
@@ -90,6 +91,7 @@ public class HomeFragment extends BaseMvpFragment  {
 
     @Override
     protected void onSuccess(int apiConfig, int loadMode, Object[] object) {
+        LoadView.getInstance(getActivity(), null).dismiss();
         switch (apiConfig) {
             case ApiConfig.GET_HoME1:
                 BaseInfo<List<IndexCommondEntity>> baseInfo = (BaseInfo<List<IndexCommondEntity>>) object[0];
