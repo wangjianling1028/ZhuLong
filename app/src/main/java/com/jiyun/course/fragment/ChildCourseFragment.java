@@ -1,7 +1,9 @@
 package com.jiyun.course.fragment;
 
+import android.os.Bundle;
 import android.view.View;
 
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jiyun.bean.CourseDrillBean;
@@ -13,22 +15,21 @@ import com.jiyun.frame.constants.ConstantKey;
 import com.jiyun.frame.mvp.ICommonModel;
 import com.jiyun.frame.utils.ParamHashMap;
 import com.jiyun.zhulong.R;
+import com.jiyun.zhulong.activity.MyHomeActivity;
 import com.jiyun.zhulong.base.BaseMvpFragment;
 import com.jiyun.zhulong.interfaces.DataListener;
+import com.jiyun.zhulong.interfaces.OnRecyclerItemClick;
 import com.jiyun.zhulong.loading.LoadView;
 import com.jiyun.zhulong.model.CourseModel;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yiyatech.utils.newAdd.SharedPrefrenceUtils;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
 
-/**
- *    ：      --
- * 创建于： 2020/6/5 23:37
- *    邮箱：1750827655@qq.com
- */
+
 public class ChildCourseFragment extends BaseMvpFragment {
 
     @BindView(R.id.recyclerView)
@@ -41,6 +42,7 @@ public class ChildCourseFragment extends BaseMvpFragment {
     private int course_type;
     private ChildCourseRvAdapter adapter;
     private SpecialtyBean.ResultBean.DataBean dataBean;
+    private List<CourseDrillBean.ResultBean.ListsBean> lists;
 
     //因为该fragment为3个页面公用而course_type参数为不确定的，可以通过构造方法将可变参数传过来
     public ChildCourseFragment(int course_type) {
@@ -66,6 +68,18 @@ public class ChildCourseFragment extends BaseMvpFragment {
         initRecyclerView(recyclerView);
         adapter = new ChildCourseRvAdapter(getActivity());
         recyclerView.setAdapter(adapter);
+
+        adapter.setmOnRecyclerItemClick(new OnRecyclerItemClick() {
+            @Override
+            public void onItemClick(int pos, Object[] pTS) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("itemInfo",lists.get(pos));
+                bundle.putString("record","0");
+                bundle.putString("f","1004");
+                MyHomeActivity myHomeActivity= (MyHomeActivity) getActivity();
+                myHomeActivity.navController.navigate(R.id.home_to_course_detail,bundle);
+            }
+        });
     }
 
     //由于涉及到选择专业的业务，当选择了专业需要及时更新数据所以在onResume生命周期方法中再次请求数据
@@ -118,7 +132,7 @@ public class ChildCourseFragment extends BaseMvpFragment {
         switch (apiConfig) {
             case ApiConfig.GET_COURSE_DATA:
                  CourseDrillBean courseDrillBeans = (CourseDrillBean) object[0];
-                List<CourseDrillBean.ResultBean.ListsBean> lists = courseDrillBeans.getResult().getLists();
+                lists = courseDrillBeans.getResult().getLists();
                 adapter.initData(lists);
                 refreshLayout.finishLoadMore();
                 refreshLayout.finishRefresh();

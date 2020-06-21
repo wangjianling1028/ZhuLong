@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.jiyun.bean.CourseDrillBean;
 import com.jiyun.zhulong.R;
+import com.jiyun.zhulong.interfaces.OnRecyclerItemClick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,20 @@ public class ChildCourseRvAdapter extends RecyclerView.Adapter<ChildCourseRvAdap
         holder.studentnum.setText(listsBean.getStudentnum()+"人学习");
         holder.tv_rate.setText("好评度"+listsBean.getRate());
         holder.tv_price.setText("￥"+listsBean.getPrice());
+        //接口回调 点击进入详情
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnRecyclerItemClick.onItemClick(position);
+            }
+        });
+
+    }
+
+    private OnRecyclerItemClick mOnRecyclerItemClick;
+
+    public void setmOnRecyclerItemClick(OnRecyclerItemClick pOnRecyclerItemClick) {
+        this.mOnRecyclerItemClick = pOnRecyclerItemClick;
     }
 
     @Override

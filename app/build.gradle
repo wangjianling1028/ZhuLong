@@ -54,6 +54,8 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+
+
     defaultConfig {
      //   applicationId "com.jiyun.zhulong"
         applicationId "com.zhulong.eduvideo"
@@ -63,8 +65,16 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    dependencies {
+        // 引入multidex库
+        implementation 'com.android.support:multidex:1.0.3'
+    }
+
 
     signingConfigs {
         release {

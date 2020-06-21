@@ -38,4 +38,6 @@ public class ApiConfig {
     //资料详情
     public static final int GROUP_DETAIL = 23;
     public static final int GROUP_DETAIL_FOOTER_DATA = 24;
+    //课程详情
+    public static final int COURSE_DETAIL_INFO = 25;
 }

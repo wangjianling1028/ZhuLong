@@ -26,6 +26,13 @@ public class CourseModel implements ICommonModel {
                Map<String,Object> map= (Map<String, Object>) object[0];
                mManager.netWork(mManager.getService(context.getString(R.string.edu_openapi)).getCourseDrillData(map),iCommonPresenter,apiConfig,loadTypeConfig,object);
                 break;
+
+            case ApiConfig.COURSE_DETAIL_INFO:
+                Map<String,Object> map1 = (Map<String, Object>) object[0];
+                mManager.netWork(mManager.getService("https://edu.zhulong.com/api/").getCourseDetail(map1),iCommonPresenter,apiConfig,loadTypeConfig);
+                break;
+
+
         }
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jiyun.frame.api.LoadTypeConfig;
+import com.jiyun.zhulong.activity.HomeActivity;
 import com.jiyun.zhulong.interfaces.DataListener;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -62,5 +63,9 @@ public class BaseFragment extends Fragment {
 
     public int setColor(@ColorRes int pColor){
         return ContextCompat.getColor(getContext(),pColor);
+    }
+
+    public HomeActivity getHomeActivity(){
+        return (HomeActivity)getActivity();
     }
 }

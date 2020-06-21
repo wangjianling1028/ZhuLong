@@ -1,5 +1,6 @@
 package com.jiyun.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * 创建于： 2020/6/6 00:11
  *    邮箱：1750827655@qq.com
  */
-public class CourseDrillBean {
+public class CourseDrillBean implements Serializable {
 
     /**
      * errNo : 0
@@ -43,7 +44,7 @@ public class CourseDrillBean {
         this.exeTime = exeTime;
     }
 
-    public static class ResultBean {
+    public static class ResultBean  implements Serializable{
         private List<ListsBean> lists;
 
         public List<ListsBean> getLists() {
@@ -54,7 +55,7 @@ public class CourseDrillBean {
             this.lists = lists;
         }
 
-        public static class ListsBean {
+        public static class ListsBean implements Serializable {
             /**
              * id : 68126
              * lesson_id : 9204

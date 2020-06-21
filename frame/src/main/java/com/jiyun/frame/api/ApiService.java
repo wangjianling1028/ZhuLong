@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonObject;
+import com.jiyun.bean.CourseDetailInfo;
 import com.jiyun.bean.CourseDrillBean;
 import com.jiyun.bean.DataSquadBean;
 import com.jiyun.bean.GroupDetailEntity;
@@ -130,4 +131,9 @@ public interface ApiService {
 
     @GET("group/getGroupThreadList")
     Observable<JsonObject> getGroupDetailFooterData(@QueryMap Map<String,Object> parmas);
+
+    //课程详情
+    @POST("getNewLessonDetail")
+    @FormUrlEncoded
+    Observable<BaseInfo<CourseDetailInfo>> getCourseDetail(@FieldMap Map<String, Object> pMap);
 }
