@@ -8,6 +8,7 @@ public class BaseInfo<D> implements Serializable {
     public int exeTime;
     public String msg;
     public D result;
+    public String discount_info;
 
     public boolean isSuccess() {
         return errNo == 0;
